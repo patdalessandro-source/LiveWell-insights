@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LiveWell Capital — Monthly Insights | March 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<style>
+:root {
+--navy: #163F5F;
+--exec: #2F6FA3;
+--light: #A9C8E3;
+--charcoal: #2B2B2B;
+--white: #FFFFFF;
+--bg: #F4F7FA;
+--border: #D0E0ED;
+--card-bg: #FFFFFF;
+--news-accent: #E8F2FA;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--charcoal); line-height:1.6; min-height:100vh; }
+
+/* ── HEADER ── */
+.site-header {
+background: var(–navy);
+color: var(–white);
+padding: 2rem 2.5rem 1.5rem;
+display: flex;
+align-items: center;
+justify-content: space-between;
+border-bottom: 4px solid var(–exec);
+position: sticky; top:0; z-index:200;
+box-shadow: 0 4px 20px rgba(22,63,95,0.25);
+}
+.header-brand { display:flex; align-items:center; gap:1.2rem; }
+.header-brand-text h1 {
+font-family: ‘Playfair Display’, serif;
+font-size: 1.7rem; font-weight:700; letter-spacing:1px;
+line-height:1;
+}
+.header-brand-text p { font-size:0.78rem; font-weight:300; letter-spacing:2px; opacity:0.8; margin-top:0.2rem; text-transform:uppercase; }
+.header-date { font-family:‘Playfair Display’,serif; font-size:1.2rem; color:var(–light); font-weight:400; }
+
+/* ── NAV ── */
+nav.main-nav {
+background: var(–exec);
+position: sticky; top: 88px; z-index: 150;
+box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+nav.main-nav ul { display:flex; list-style:none; justify-content:center; flex-wrap:wrap; margin:0; padding:0; }
+nav.main-nav > ul > li { position: relative; }
+nav.main-nav > ul > li > a {
+display: block;
+color: var(–white);
+text-decoration: none;
+font-size: 0.82rem;
+font-weight: 600;
+letter-spacing: 0.5px;
+padding: 0.85rem 1.1rem;
+text-transform: uppercase;
+transition: background 0.2s;
+white-space: nowrap;
+}
+nav.main-nav > ul > li > a:hover,
+nav.main-nav > ul > li > a.active { background: var(–navy); }
+
+/* Dropdown */
+nav.main-nav > ul > li > .dropdown {
+display: none;
+position: absolute;
+top: 100%; left: 0;
+background: var(–navy);
+min-width: 220px;
+border-top: 3px solid var(–light);
+box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+z-index: 300;
+}
+nav.main-nav > ul > li:hover > .dropdown { display: block; }
+nav.main-nav .dropdown a {
+display: block;
+color: var(–white);
+text-decoration: none;
+font-size: 0.8rem;
+font-weight: 500;
+padding: 0.65rem 1.2rem;
+border-bottom: 1px solid rgba(169,200,227,0.15);
+transition: background 0.15s, padding-left 0.15s;
+}
+nav.main-nav .dropdown a:hover { background: var(–exec); padding-left: 1.6rem; }
+nav.main-nav .dropdown a:last-child { border-bottom: none; }
+nav.main-nav > ul > li > a .caret {
+font-size: 0.65rem; margin-left: 4px; opacity: 0.7; vertical-align: middle;
+}
+
+/* ── PAGE SYSTEM ── */
+.page { display: none; animation: fadeUp 0.35s ease; }
+.page.active { display: block; }
+@keyframes fadeUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+
+/* ── CONTAINER ── */
+.container { max-width:1400px; margin:0 auto; padding:2.5rem 2rem; }
+
+/* ── SECTION ── */
+.section-block { margin-bottom:2.5rem; }
+.section-header {
+background: var(–navy);
+color: var(–white);
+padding: 1.2rem 1.8rem;
+border-radius: 8px 8px 0 0;
+display: flex; align-items: center; gap: 0.8rem;
+}
+.section-header h2 { font-family:‘Playfair Display’,serif; font-size:1.5rem; font-weight:700; letter-spacing:0.5px; }
+.section-body {
+background: var(–card-bg);
+padding: 2rem;
+border: 1.5px solid var(–border);
+border-top: none;
+border-radius: 0 0 8px 8px;
+}
+.section-body h3 { color:var(–exec); font-size:1.15rem; margin:1.5rem 0 0.75rem; font-weight:600; }
+.section-body h3:first-child { margin-top:0; }
+.section-body p { margin-bottom:0.9rem; line-height:1.8; font-size:0.95rem; }
+
+/* ── NM WEEKLY COMMENTARY BANNER ── */
+.wmc-banner {
+display: flex;
+gap: 1.5rem;
+background: var(–navy);
+border-radius: 10px;
+overflow: hidden;
+color: var(–white);
+text-decoration: none;
+transition: transform 0.2s, box-shadow 0.2s;
+min-height: 180px;
+}
+.wmc-banner:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(22,63,95,0.25); }
+.wmc-banner-img {
+width: 260px;
+flex-shrink: 0;
+object-fit: cover;
+background: var(–exec);
+}
+.wmc-banner-img-fallback {
+width: 260px;
+flex-shrink: 0;
+background: linear-gradient(135deg, var(–exec), var(–navy));
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 3rem;
+}
+.wmc-banner-body {
+padding: 1.5rem 1.5rem 1.5rem 0;
+display: flex;
+flex-direction: column;
+justify-content: center;
+gap: 0.6rem;
+}
+.wmc-tag {
+font-size: 0.7rem;
+font-weight: 700;
+letter-spacing: 1.5px;
+text-transform: uppercase;
+color: var(–light);
+}
+.wmc-title {
+font-family: ‘Playfair Display’, serif;
+font-size: 1.6rem;
+font-weight: 700;
+line-height: 1.3;
+color: var(–white);
+}
+.wmc-date {
+font-size: 0.85rem;
+color: var(–light);
+font-weight: 500;
+}
+.wmc-cta {
+display: inline-block;
+margin-top: 0.4rem;
+background: var(–exec);
+color: var(–white);
+font-size: 0.82rem;
+font-weight: 700;
+padding: 0.45rem 1rem;
+border-radius: 20px;
+align-self: flex-start;
+transition: background 0.2s;
+}
+.wmc-banner:hover .wmc-cta { background: var(–light); color: var(–navy); }
+@media(max-width: 600px) {
+.wmc-banner { flex-direction: column; }
+.wmc-banner-img, .wmc-banner-img-fallback { width: 100%; height: 180px; }
+.wmc-banner-body { padding: 1.2rem; }
+.wmc-title { font-size: 1.2rem; }
+}
+.news-loading { text-align:center; padding:2rem; color:#7A92A8; font-style:italic; }
+.news-disclaimer { font-size:0.75rem; color:#9aabbf; margin-top:0.8rem; font-style:italic; }
+
+/* ── STATS GRID ── */
+.stats-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:1rem; margin:1.2rem 0; }
+.stat-box {
+background: var(–navy);
+color: var(–white);
+padding: 1.4rem 1.2rem;
+border-radius:8px;
+text-align:center;
+box-shadow: 0 3px 10px rgba(22,63,95,0.15);
+}
+.stat-box .num { font-family:‘Playfair Display’,serif; font-size:2rem; font-weight:700; color:var(–light); line-height:1; margin-bottom:0.3rem; }
+.stat-box .lbl { font-size:0.82rem; font-weight:500; opacity:0.85; }
+
+/* ── INFO / WARNING BOXES ── */
+.info-box { background:#EBF4FB; border-left:5px solid var(–exec); padding:1.2rem 1.4rem; border-radius:4px; margin:1.2rem 0; }
+.info-box h4 { color:var(–navy); font-weight:700; margin-bottom:0.4rem; font-size:0.95rem; }
+.warning-box { background:#FFF8EC; border-left:5px solid #E6820A; padding:1.2rem 1.4rem; border-radius:4px; margin:1.2rem 0; }
+.warning-box h4 { color:#A85D00; font-weight:700; margin-bottom:0.4rem; font-size:0.95rem; }
+
+/* ── CARDS ── */
+.card-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1.5rem; margin-top:1.2rem; }
+.card {
+background:var(–card-bg);
+border:1.5px solid var(–border);
+border-radius:8px;
+padding:1.4rem;
+box-shadow:0 2px 8px rgba(0,0,0,0.06);
+transition:transform 0.2s,box-shadow 0.2s;
+}
+.card:hover { transform:translateY(-3px); box-shadow:0 6px 18px rgba(22,63,95,0.1); }
+.card h4 { color:var(–navy); font-size:1.05rem; font-weight:700; margin-bottom:0.6rem; }
+.card p { font-size:0.88rem; line-height:1.7; }
+
+/* ── TABLE ── */
+table { width:100%; border-collapse:collapse; margin:1.2rem 0; background:var(–card-bg); border-radius:8px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+thead { background:var(–exec); color:var(–white); }
+th { padding:0.9rem 1rem; text-align:left; font-weight:600; font-size:0.88rem; }
+td { padding:0.85rem 1rem; border-bottom:1px solid var(–border); font-size:0.9rem; }
+tr:hover td { background:#F0F7FC; }
+tbody tr:last-child td { border-bottom:none; }
+
+/* ── CHART CONTAINER ── */
+.chart-wrap {
+background:var(–card-bg);
+border:1.5px solid var(–border);
+border-radius:8px;
+padding:1.4rem;
+margin:1.2rem 0;
+box-shadow:0 2px 8px rgba(0,0,0,0.06);
+}
+.chart-title { color:var(–navy); font-size:1rem; font-weight:700; margin-bottom:0.25rem; text-align:center; }
+.chart-subtitle { color:#7A92A8; font-size:0.75rem; text-align:center; margin-bottom:1rem; font-style:italic; }
+.chart-legend { display:flex; gap:1.5rem; justify-content:center; margin-top:0.8rem; flex-wrap:wrap; }
+.legend-item { display:flex; align-items:center; gap:0.4rem; font-size:0.82rem; font-weight:600; }
+.legend-swatch { width:14px; height:14px; border-radius:2px; flex-shrink:0; }
+
+/* ── SUBSECTION ── */
+.subsection { margin-top:2rem; padding:1.5rem; background:var(–bg); border-left:5px solid var(–exec); border-radius:4px; }
+.subsection h4 { color:var(–navy); font-size:1.15rem; font-weight:700; margin-bottom:0.8rem; }
+.pc-rationale-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1rem; margin:1.2rem 0; }
+.pc-box { background:var(–card-bg); border:1px solid var(–border); border-radius:6px; padding:1.2rem; }
+.pc-box h5 { color:var(–navy); font-size:0.85rem; font-weight:700; margin-bottom:0.4rem; text-transform:uppercase; letter-spacing:0.5px; }
+.pc-box p { font-size:0.88rem; line-height:1.6; margin:0; }
+.eligibility-tag { display:inline-block; background:var(–navy); color:var(–white); font-size:0.75rem; font-weight:700; padding:0.2rem 0.6rem; border-radius:20px; margin:0.15rem 0.15rem 0 0; }
+.eligibility-tag.qp { background:var(–exec); }
+.pc-disclaimer { font-size:0.76rem; color:#9aabbf; font-style:italic; margin-top:0.8rem; padding-top:0.6rem; border-top:1px solid var(–border); }
+
+/* ── HOLDING CARDS ── */
+.holding-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.25rem; margin:1.2rem 0; }
+.holding-card {
+background:var(–card-bg);
+border:1.5px solid var(–border);
+border-radius:10px;
+padding:1.25rem;
+display:flex; flex-direction:column; gap:0.75rem;
+box-shadow:0 2px 8px rgba(0,0,0,0.05);
+transition:box-shadow 0.2s;
+}
+.holding-card:hover { box-shadow:0 5px 16px rgba(22,63,95,0.12); }
+.holding-header { display:flex; align-items:flex-start; justify-content:space-between; gap:0.75rem; flex-wrap:wrap; }
+.holding-logo-name { display:flex; align-items:center; gap:0.65rem; }
+.holding-logo { width:32px; height:32px; border-radius:4px; object-fit:contain; background:#f0f0f0; border:1px solid var(–border); flex-shrink:0; }
+.holding-logo-fallback {
+width:32px; height:32px; border-radius:4px;
+background:var(–navy); color:var(–white);
+display:flex; align-items:center; justify-content:center;
+font-size:0.65rem; font-weight:800; letter-spacing:0.5px;
+flex-shrink:0; text-align:center; line-height:1.1;
+}
+.holding-name { font-size:0.92rem; font-weight:700; color:var(–navy); line-height:1.3; }
+.holding-type { font-size:0.7rem; font-weight:700; letter-spacing:0.5px; padding:0.2rem 0.6rem; border-radius:20px; white-space:nowrap; flex-shrink:0; align-self:flex-start; }
+.type-credit { background:#E8F4EC; color:#1A6B35; }
+.type-equity { background:#E8EEF6; color:#163F5F; }
+.type-hedged { background:#F5EEE8; color:#7A3B10; }
+.holding-link { font-size:0.8rem; font-weight:600; color:var(–exec); text-decoration:none; border-bottom:1px solid var(–light); padding-bottom:0.1rem; align-self:flex-start; }
+.holding-link:hover { color:var(–navy); border-color:var(–navy); }
+.holding-stats { display:grid; grid-template-columns:repeat(2,1fr); gap:0.5rem; background:var(–bg); border-radius:6px; padding:0.75rem; }
+.hstat { display:flex; flex-direction:column; gap:0.1rem; }
+.hstat-val { font-size:0.98rem; font-weight:800; color:var(–navy); line-height:1.2; }
+.hstat-lbl { font-size:0.68rem; color:#5A7A8F; line-height:1.3; }
+.holding-bullets { margin:0; padding-left:1.1rem; display:flex; flex-direction:column; gap:0.45rem; }
+.holding-bullets li { font-size:0.85rem; line-height:1.55; color:var(–charcoal); }
+
+/* ── STATUS BADGE ── */
+.status { display:inline-block; padding:0.2rem 0.7rem; border-radius:20px; font-size:0.82rem; font-weight:700; margin-bottom:0.8rem; }
+.status.overweight { background:#D4EDDA; color:#1A5E2E; }
+.status.underweight { background:#FADADD; color:#7A0020; }
+
+/* ── MODEL GRID ── */
+.model-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:1.2rem; margin-top:1rem; }
+.model-card {
+background:var(–card-bg); border:1.5px solid var(–navy);
+border-radius:8px; padding:1.3rem; text-align:center;
+cursor:pointer; transition:all 0.2s;
+box-shadow:0 2px 6px rgba(0,0,0,0.06);
+}
+.model-card:hover { background:var(–light); transform:scale(1.03); box-shadow:0 6px 16px rgba(22,63,95,0.15); }
+.model-card h4 { color:var(–navy); margin-bottom:0.4rem; font-size:1rem; font-weight:700; }
+.model-card .model-type { color:var(–exec); font-size:0.82rem; font-weight:500; margin-bottom:0.8rem; }
+.allocation-bar { display:flex; height:26px; border-radius:4px; overflow:hidden; margin-bottom:0.5rem; }
+.alloc-eq { background:var(–navy); display:flex; align-items:center; justify-content:center; color:white; font-size:0.78rem; font-weight:700; }
+.alloc-fi { background:var(–exec); display:flex; align-items:center; justify-content:center; color:white; font-size:0.78rem; font-weight:700; }
+.link-icon { display:inline-block; margin-top:0.4rem; color:var(–exec); font-weight:600; font-size:0.85rem; }
+
+/* ── TILTS IMAGE ── */
+#tiltsImg { width:100%; height:auto; border-radius:6px; }
+
+/* ── FOOTER ── */
+footer { background:var(–navy); color:var(–white); text-align:center; padding:1.8rem 2rem; margin-top:3rem; }
+footer p { margin:0.4rem 0; font-size:0.85rem; opacity:0.85; }
+
+/* ── MOBILE ── */
+@media(max-width:768px) {
+.site-header { padding:1.2rem 1rem; flex-direction:column; gap:0.8rem; text-align:center; }
+.header-brand-text h1 { font-size:1.3rem; }
+nav.main-nav > ul > li > a { padding:0.65rem 0.7rem; font-size:0.75rem; }
+.container { padding:1.5rem 1rem; }
+.stats-row { grid-template-columns:repeat(2,1fr); }
+}
+</style>
+
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+
+<header class="site-header">
+<div class="header-brand">
+<div class="header-brand-text">
+<h1>LIVEWELL CAPITAL</h1>
+<p>Wealth Management Department · Monthly Insights</p>
+</div>
+</div>
+<div class="header-date">March 2026</div>
+</header>
+
+<!-- ── NAV ── -->
+
+<nav class="main-nav">
+<ul>
+<li><a href="#" onclick="showPage('home')" id="nav-home" class="active">Market Overview</a></li>
+<li>
+<a href="#" onclick="showPage('market'); return false;">Market Analysis <span class="caret">▾</span></a>
+<div class="dropdown">
+<a href="#" onclick="showPage('market'); scrollTo('sec-snapshot'); return false;">February Market Snapshot</a>
+<a href="#" onclick="showPage('market'); scrollTo('sec-summary'); return false;">Performance Summary</a>
+<a href="#" onclick="showPage('market'); scrollTo('sec-sectors'); return false;">Sector Highlights</a>
+<a href="#" onclick="showPage('market'); scrollTo('sec-tilts'); return false;">Current Tilts</a>
+</div>
+</li>
+<li>
+<a href="#" onclick="showPage('asset'); return false;">Asset Classes <span class="caret">▾</span></a>
+<div class="dropdown">
+<a href="#" onclick="showPage('asset'); scrollTo('sec-equities'); return false;">Equities</a>
+<a href="#" onclick="showPage('asset'); scrollTo('sec-fixed'); return false;">Fixed Income</a>
+<a href="#" onclick="showPage('asset'); scrollTo('sec-real'); return false;">Real Assets</a>
+</div>
+</li>
+<li>
+<a href="#" onclick="showPage('private'); return false;">Private Capital <span class="caret">▾</span></a>
+<div class="dropdown">
+<a href="#" onclick="showPage('private'); scrollTo('sec-pe-overview'); return false;">Private Equity Overview</a>
+<a href="#" onclick="showPage('private'); scrollTo('sec-pc-overview'); return false;">Private Credit Overview</a>
+<a href="#" onclick="showPage('private'); scrollTo('sec-model-holdings'); return false;">Model Holdings</a>
+<a href="#" onclick="showPage('private'); scrollTo('sec-liquid-alts'); return false;">Liquid Alternatives</a>
+</div>
+</li>
+<li><a href="#" onclick="showPage('models')" id="nav-models">Model Portfolios</a></li>
+<li><a href="#" onclick="showPage('resources')" id="nav-resources">Resources</a></li>
+</ul>
+</nav>
+
+<!-- ══════════════════════════════════════════ -->
+
+<!-- PAGE: HOME (Market Overview + News) -->
+
+<!-- ══════════════════════════════════════════ -->
+
+<div id="page-home" class="page active">
+<div class="container">
+
+<!-- CURRENT EVENTS -->
+
+<div class="section-block">
+<div class="section-header"><h2 id="wmc-banner">📊 Weekly Market Commentary</h2></div>
+<div class="section-body">
+<div id="news-container">
+<div class="news-loading">Loading this week's commentary…</div>
+</div>
+<p class="news-disclaimer">Weekly market commentary sourced from Northwestern Mutual. Published every Monday. <a href="https://www.northwesternmutual.com/life-and-money/market-commentary/weekly-market-commentary/" target="_blank" style="color:var(--exec);font-weight:600;">View all commentaries →</a></p>
+</div>
+</div>
+
+<!-- FEBRUARY SNAPSHOT -->
+
+<div class="section-block" id="sec-snapshot-home">
+<div class="section-header"><h2>February Monthly Market Snapshot</h2></div>
+<div class="section-body">
+<div class="card-grid">
+<div class="card"><h4>💻 Tech Selloff Weighs on Markets</h4><p>U.S. equities struggled in February as AI-driven concerns rattled the technology sector. The Nasdaq fell over 3% — its worst month since March 2025 — while the S&P 500 slipped nearly 1% and briefly turned negative for the year. Software stocks bore the brunt, with the iShares Tech-Software ETF (IGV) down nearly 10% for the month amid investor fears that AI could disrupt traditional software business models.</p></div>
+<div class="card"><h4>🌍 International Continues to Lead</h4><p>International markets maintained their 2026 outperformance trend as the MSCI World ex-US index gained approximately 8% year-to-date through February, compared to a roughly flat S&P 500. A weakening U.S. dollar and more attractive valuations abroad continued to draw capital overseas, with European and emerging market equities leading the way.</p></div>
+<div class="card"><h4>🏛️ Tariffs &amp; Supreme Court Ruling Rattle Markets</h4><p>President Trump's State of the Union address doubled down on tariff policy, even as a Supreme Court ruling struck down emergency universal tariffs, casting uncertainty over the administration's trade agenda. Sticky inflation data — January PPI rose 0.5% versus a 0.3% consensus estimate — further complicated the Fed's rate path and weighed on investor sentiment late in the month.</p></div>
+</div>
+</div>
+</div>
+
+<!-- MARKET SUMMARY -->
+
+<div class="section-block" id="sec-summary-home">
+<div class="section-header"><h2>Market Performance Summary</h2></div>
+<div class="section-body">
+<div class="stats-row">
+<div class="stat-box"><div class="num">+0.17%</div><div class="lbl">Dow Jones YTD</div></div>
+<div class="stat-box"><div class="num">-0.87%</div><div class="lbl">S&amp;P 500 YTD</div></div>
+<div class="stat-box"><div class="num">-3.38%</div><div class="lbl">Nasdaq YTD</div></div>
+<div class="stat-box"><div class="num">3.50–3.75%</div><div class="lbl">Fed Benchmark Rate</div></div>
+</div>
+<h3>February 2026 Review</h3>
+<p>February proved to be a challenging month for U.S. equities, particularly in the technology sector. The Nasdaq posted its worst monthly decline since March 2025, falling over 3%, while the S&amp;P 500 slipped nearly 1% and briefly dipped into negative territory for the year. The Dow Jones Industrial Average was the relative bright spot, eking out a small gain of approximately 0.17%.</p>
+<div class="chart-wrap">
+<div class="chart-title">February 2026 — Major Index Performance (MTD)</div>
+<div class="chart-subtitle">Month-to-date % change | Source: YCharts, March 2, 2026</div>
+<canvas id="chartMarket" style="height:320px;"></canvas>
+<div class="chart-legend">
+<span class="legend-item"><span class="legend-swatch" style="background:#163F5F"></span>S&amp;P 500 <strong style="color:#163F5F">−0.87%</strong></span>
+<span class="legend-item"><span class="legend-swatch" style="background:#2F6FA3"></span>Dow Jones <strong style="color:#2F6FA3">+0.17%</strong></span>
+<span class="legend-item"><span class="legend-swatch" style="background:#A9C8E3"></span>Nasdaq <strong>−3.38%</strong></span>
+</div>
+</div>
+<div class="info-box">
+<h4>Federal Reserve Update</h4>
+<p>The Fed held rates steady at 3.50%–3.75% as sticky inflation complicated the path to cuts. January's PPI came in at +0.5% — well above the 0.3% consensus estimate — while the 10-year Treasury yield dipped below 4% mid-month before recovering. Markets are now pricing in fewer rate cuts for 2026 than previously expected.</p>
+<p><strong>Leadership Transition:</strong> Kevin Warsh remains on track to replace Jerome Powell as Fed Chair in May.</p>
+</div>
+<div class="warning-box">
+<h4>⚠ Tariff &amp; Trade Policy Uncertainty</h4>
+<p>The Supreme Court struck down the administration's emergency universal tariffs as exceeding executive authority. President Trump's State of the Union reaffirmed commitment to tariffs, setting up continued volatility as negotiations with global trading partners evolve.</p>
+</div>
+</div>
+</div>
+
+</div>
+</div><!-- /page-home -->
+
+<!-- ══════════════════════════════════════════ -->
+
+<!-- PAGE: MARKET ANALYSIS -->
+
+<!-- ══════════════════════════════════════════ -->
+
+<div id="page-market" class="page">
+<div class="container">
+
+<div class="section-block" id="sec-snapshot">
+<div class="section-header"><h2>February Monthly Market Snapshot</h2></div>
+<div class="section-body">
+<div class="card-grid">
+<div class="card"><h4>💻 Tech Selloff Weighs on Markets</h4><p>U.S. equities struggled in February as AI-driven concerns rattled the technology sector. The Nasdaq fell over 3% — its worst month since March 2025 — while the S&P 500 slipped nearly 1% and briefly turned negative for the year. Software stocks bore the brunt, with the iShares Tech-Software ETF (IGV) down nearly 10% for the month amid investor fears that AI could disrupt traditional software business models.</p></div>
+<div class="card"><h4>🌍 International Continues to Lead</h4><p>International markets maintained their 2026 outperformance trend as the MSCI World ex-US index gained approximately 8% year-to-date through February, compared to a roughly flat S&P 500. A weakening U.S. dollar and more attractive valuations abroad continued to draw capital overseas, with European and emerging market equities leading the way.</p></div>
+<div class="card"><h4>🏛️ Tariffs &amp; Supreme Court Ruling Rattle Markets</h4><p>President Trump's State of the Union address doubled down on tariff policy, even as a Supreme Court ruling struck down emergency universal tariffs. Sticky inflation data — January PPI rose 0.5% versus a 0.3% consensus estimate — further complicated the Fed's rate path and weighed on investor sentiment late in the month.</p></div>
+</div>
+</div>
+</div>
+
+<div class="section-block" id="sec-summary">
+<div class="section-header"><h2>Market Performance Summary</h2></div>
+<div class="section-body">
+<div class="stats-row">
+<div class="stat-box"><div class="num">+0.17%</div><div class="lbl">Dow Jones YTD</div></div>
+<div class="stat-box"><div class="num">-0.87%</div><div class="lbl">S&amp;P 500 YTD</div></div>
+<div class="stat-box"><div class="num">-3.38%</div><div class="lbl">Nasdaq YTD</div></div>
+<div class="stat-box"><div class="num">3.50–3.75%</div><div class="lbl">Fed Benchmark Rate</div></div>
+</div>
+<div class="chart-wrap">
+<div class="chart-title">February 2026 Market Performance — Major Indices</div>
+<div class="chart-subtitle">Month-to-date % change | Source: YCharts, March 2, 2026</div>
+<canvas id="chartMarket2" style="height:320px;"></canvas>
+<div class="chart-legend">
+<span class="legend-item"><span class="legend-swatch" style="background:#163F5F"></span>S&amp;P 500</span>
+<span class="legend-item"><span class="legend-swatch" style="background:#2F6FA3"></span>Dow Jones</span>
+<span class="legend-item"><span class="legend-swatch" style="background:#A9C8E3"></span>Nasdaq</span>
+</div>
+</div>
+<div class="info-box"><h4>Federal Reserve Update</h4><p>The Fed held rates steady at 3.50%–3.75% as sticky inflation complicated the path to cuts. January's PPI came in at +0.5% — well above the 0.3% consensus estimate — while the 10-year Treasury yield dipped below 4% mid-month before recovering. Kevin Warsh remains on track to replace Jerome Powell as Fed Chair in May.</p></div>
+<div class="warning-box"><h4>⚠ Tariff &amp; Trade Policy Uncertainty</h4><p>The Supreme Court struck down the administration's emergency universal tariffs as exceeding executive authority, creating fresh uncertainty over U.S. trade policy. President Trump's State of the Union address reaffirmed commitment to tariffs.</p></div>
+</div>
+</div>
+
+<div class="section-block" id="sec-sectors">
+<div class="section-header"><h2>Sector &amp; Asset Class Highlights</h2></div>
+<div class="section-body">
+<div class="card-grid">
+<div class="card"><h4>Value vs. Growth</h4><p>Value stocks continued to outperform growth for a fourth consecutive month. Energy, Healthcare, and Industrials led sector gains, while Technology bore the heaviest losses amid the AI disruption narrative.</p><p><strong>Software ETF (IGV)</strong> fell nearly 10% in February, its worst monthly showing in years.</p></div>
+<div class="card"><h4>Gold Continues Rally</h4><p>Gold remained near all-time highs, trading around $5,165/oz by month-end — up more than $2,200 versus a year ago.</p><p>Central bank demand remained strong, with the PBoC extending gold purchases for a <strong>15th consecutive month</strong> in January.</p></div>
+<div class="card"><h4>Trade Policy Volatility</h4><p>The Supreme Court's ruling against universal emergency tariffs rattled markets mid-month, before Trump reaffirmed his tariff agenda at the State of the Union.</p><p>Geopolitical uncertainty kept <strong>safe-haven assets elevated</strong> throughout February.</p></div>
+<div class="card"><h4>International Outperformance</h4><p><strong>MSCI Emerging Markets:</strong> +14.69% YTD<br><strong>MSCI Europe:</strong> +7.68% YTD<br><strong>MSCI USA:</strong> +0.23% YTD<br>Driven by cheaper valuations and a weakening dollar.</p></div>
+</div>
+<div class="chart-wrap" style="margin-top:1.5rem;">
+<div class="chart-title">Value vs. Growth YTD — Russell 1000</div>
+<div class="chart-subtitle">Year-to-date total return % | Source: YCharts, March 2, 2026</div>
+<canvas id="chartSector" style="height:320px;"></canvas>
+<div class="chart-legend">
+<span class="legend-item"><span class="legend-swatch" style="background:#163F5F"></span>R1000 Value <strong style="color:#163F5F">+7.28%</strong></span>
+<span class="legend-item"><span class="legend-swatch" style="background:#2F6FA3"></span>R1000 Growth <strong style="color:#2F6FA3">−4.82%</strong></span>
+</div>
+</div>
+<div class="chart-wrap">
+<div class="chart-title">International Market Performance YTD</div>
+<div class="chart-subtitle">Year-to-date % change | Source: YCharts, March 2, 2026</div>
+<canvas id="chartIntl" style="height:320px;"></canvas>
+<div class="chart-legend">
+<span class="legend-item"><span class="legend-swatch" style="background:#163F5F"></span>MSCI Emerging Markets <strong>+14.69%</strong></span>
+<span class="legend-item"><span class="legend-swatch" style="background:#2F6FA3"></span>MSCI Europe <strong>+7.68%</strong></span>
+<span class="legend-item"><span class="legend-swatch" style="background:#A9C8E3"></span>MSCI USA <strong>+0.23%</strong></span>
+</div>
+</div>
+</div>
+</div>
+
+<div class="section-block" id="sec-tilts">
+<div class="section-header"><h2>Current Tilts by Asset Class</h2></div>
+<div class="section-body">
+<div class="chart-wrap">
+<div class="chart-title">Current Asset Class Positioning</div>
+<img id="tiltsImg" src="" alt="LiveWell Capital Asset Class Tilts">
+</div>
+<h3>Correction &amp; Bear Market Indicators</h3>
+<table>
+<thead><tr><th>Metric</th><th>Level</th><th>Date</th></tr></thead>
+<tbody>
+<tr><td><strong>S&P 500 Highwater Close</strong></td><td>7,002</td><td>1/28/2026</td></tr>
+<tr><td><strong>−10% (Correction)</strong></td><td>6,302</td><td>Rounded up</td></tr>
+<tr><td><strong>−20% (Bear Market)</strong></td><td>5,602</td><td>Rounded up</td></tr>
+<tr><td><strong>Feb 28 Close</strong></td><td>6,879</td><td>2/28/2026</td></tr>
+<tr><td><strong>Distance from Highwater</strong></td><td>−1.75%</td><td>Within normal range</td></tr>
+</tbody>
+</table>
+<div class="warning-box" style="margin-top:1.5rem;"><h4>Market Context</h4><p>These levels provide important reference points for understanding market volatility and our defensive positioning triggers. We actively monitor these thresholds as part of our risk management framework.</p></div>
+</div>
+</div>
+
+</div>
+</div><!-- /page-market -->
+
+<!-- ══════════════════════════════════════════ -->
+
+<!-- PAGE: ASSET CLASSES -->
+
+<!-- ══════════════════════════════════════════ -->
+
+<div id="page-asset" class="page">
+<div class="container">
+
+<div class="section-block" id="sec-equities">
+<div class="section-header"><h2>Equities</h2></div>
+<div class="section-body">
+<span class="status underweight">Slightly Underweight</span>
+<h3>Market Overview</h3>
+<p>The U.S. economy continued to advance in 2025 despite the labor market providing a contrasting signal of growing weakness. Similarly to the economy, equity markets remained resilient and pushed markedly higher with Large-Cap stocks posting their third straight year of 15+% returns.</p>
+<h3>Market Dynamics</h3>
+<p>Over the past few years, both the economy and markets have narrowed driven by the bifurcated impact of the Fed's tightening cycle on individual consumers and businesses. Questions remain over the sustainability of the third year of robust gains given the bifurcation and narrowness in the advance, with the artificial intelligence (AI) boom and K-shaped consumer propelling growth for the economy and markets the last few years.</p>
+<h3>Investment Strategy</h3>
+<p>We continue to believe that the delicate balance in both the economy and markets will give way to a broader advance in the coming years. We remain focused on the intermediate to long-term while positioning for lower, but broader equity returns in 2026.</p>
+<div class="info-box">
+<h4>Current Positioning</h4>
+<p><strong>Favor:</strong> U.S. Small-Caps and Mid-Caps reflecting improving earnings growth prospects and attractive relative valuations</p>
+<p><strong>Tilt:</strong> Equal-weighted versus market cap-weighted S&P given concerns about valuations and concentration</p>
+<p><strong>Underweight:</strong> Real Estate equity, which is sensitive to interest rates and pressured rent growth conditions</p>
+</div>
+</div>
+</div>
+
+<div class="section-block" id="sec-fixed">
+<div class="section-header"><h2>Fixed Income</h2></div>
+<div class="section-body">
+<span class="status overweight">Overweight</span>
+<h3>Strategic Shift</h3>
+<p>We were tactically underweight fixed income for much of the past seven years leading up to 2023 as the asset class offered little expected return over the anticipated rate of inflation. Our positioning moved to overweight in 2024 as the dramatic repricing of this asset class vastly improved the real return potential and diversification benefits within our portfolios.</p>
+<h3>2025 Performance Validation</h3>
+<p>2025 performance was a testament to this improved risk/return relationship as the asset class posted a <strong>7+% return with just a 2.5% drawdown</strong> in the second quarter.</p>
+<div class="info-box"><h4>Diversification Benefit</h4><p>Importantly, when recession fears spiked in 2024 and 2025, bonds appeared to hedge equity downside, confirming their renewed role as portfolio ballast.</p></div>
+</div>
+</div>
+
+<div class="section-block" id="sec-real">
+<div class="section-header"><h2>Real Assets</h2></div>
+<div class="section-body">
+<span class="status underweight">Underweight</span>
+<h3>Strategic Role</h3>
+<p>Real assets remain an important diversifier in portfolio construction, hedging against potential inflationary tail risk as we saw in 2022.</p>
+<h3>Current Positioning Rationale</h3>
+<p>We remain underweight preferring more economically sensitive asset class exposures along with elevated yields in fixed income that offers expected returns well above the market's expectation of future inflation.</p>
+<div class="info-box"><h4>Portfolio Context</h4><p>While maintaining an underweight position, we recognize the importance of real assets as an inflation hedge and continue to monitor opportunities for tactical adjustments.</p></div>
+</div>
+</div>
+
+</div>
+</div><!-- /page-asset -->
+
+<!-- ══════════════════════════════════════════ -->
+
+<!-- PAGE: PRIVATE CAPITAL -->
+
+<!-- ══════════════════════════════════════════ -->
+
+<div id="page-private" class="page">
+<div class="container">
+
+<!-- PE OVERVIEW -->
+
+<div class="section-block" id="sec-pe-overview">
+<div class="section-header"><h2>Private Equity — Asset Class Overview</h2></div>
+<div class="section-body">
+<p>Private equity has historically delivered a meaningful return premium over public markets across full market cycles, driven by the illiquidity premium, operational value creation, and access to company growth at stages unavailable in public markets. The chart below reflects the <strong>Private Equity Index Total Return (^PEATR)</strong> — a broad market benchmark providing a transparent, market-level view of PE performance relative to public equities.</p>
+<div class="pc-rationale-grid">
+<div class="pc-box"><h5>📈 Rationale</h5><p>PE captures an illiquidity premium by investing in companies not subject to daily public market pricing, historically generating excess returns across full cycles. A multi-strategy approach spanning buyouts, growth equity, and secondaries reduces vintage-year concentration risk and smooths the J-curve.</p></div>
+<div class="pc-box"><h5>🎯 Target Client</h5><p>Best suited for clients with long investment horizons and limited near-term liquidity requirements. Evergreen and interval fund structures have made PE more accessible — offering periodic subscriptions and tender offers rather than fully locked capital.</p><div style="margin-top:0.6rem;"><span class="eligibility-tag">$2M+ Accredited Investor</span><span class="eligibility-tag qp">$5M+ Qualified Purchaser</span></div></div>
+<div class="pc-box"><h5>🏗️ Portfolio Fit</h5><p>PE is typically allocated as a return enhancer within the equity sleeve, targeting long-term capital appreciation beyond what public markets can offer. Manager selection is critical — dispersion between top- and bottom-quartile PE managers is significantly wider than in public equity markets.</p></div>
+</div>
+<div class="chart-wrap">
+<div class="chart-title">Private Equity Annual Total Return (^PEATR) vs. S&amp;P 500</div>
+<div class="chart-subtitle">Source: YCharts. Past performance is not indicative of future results.</div>
+<canvas id="chartPE" style="height:280px;"></canvas>
+<div class="chart-legend">
+<span class="legend-item"><span class="legend-swatch" style="background:#163F5F"></span>^PEATR (Private Equity Index)</span>
+<span class="legend-item"><span class="legend-swatch" style="background:#A9C8E3"></span>S&amp;P 500 (reference)</span>
+</div>
+</div>
+<p class="pc-disclaimer">Private equity investments are available to eligible clients meeting Accredited Investor ($2M+ net worth) or Qualified Purchaser ($5M+ investable assets) thresholds. The ^PEATR index reflects the total return of publicly listed private equity companies and may not fully capture the return characteristics of direct PE fund investments. Past performance does not guarantee future results.</p>
+</div>
+</div>
+
+<!-- PC OVERVIEW -->
+
+<div class="section-block" id="sec-pc-overview">
+<div class="section-header"><h2>Private Credit — Asset Class Overview</h2></div>
+<div class="section-body">
+<p>Private credit — primarily direct lending — has emerged as one of the fastest-growing segments of the alternative investment landscape, offering floating-rate income, reduced correlation to public bond markets, and a yield premium driven by the complexity and illiquidity of non-bank lending. The <strong>VanEck BDC Income ETF (BIZD)</strong> tracks the MVIS U.S. Business Development Companies Index — the broadest, most liquid publicly available proxy for the direct lending market.</p>
+<div class="pc-rationale-grid">
+<div class="pc-box"><h5>📈 Rationale</h5><p>Private credit generates attractive income through floating-rate loans that naturally adjust upward as rates rise, providing an inherent hedge against rate risk that traditional fixed income lacks. Non-bank lenders fill a gap created by tightened bank lending standards post-2008.</p></div>
+<div class="pc-box"><h5>🎯 Target Client</h5><p>Ideal for income-oriented clients seeking yield enhancement above traditional fixed income who are willing to accept reduced liquidity in exchange for a significant premium. Interval funds and non-traded BDCs broaden access while maintaining core income characteristics.</p><div style="margin-top:0.6rem;"><span class="eligibility-tag">$2M+ Accredited Investor</span><span class="eligibility-tag qp">$5M+ Qualified Purchaser</span></div></div>
+<div class="pc-box"><h5>🏗️ Portfolio Fit</h5><p>Private credit fits within the fixed income or alternative income sleeve, serving as a yield enhancer relative to investment grade bonds. Senior-secured positioning and floating rate structures provide dual downside protection.</p></div>
+</div>
+<div class="chart-wrap">
+<div class="chart-title">Private Credit Annual Total Return (BIZD) vs. Bloomberg U.S. Agg</div>
+<div class="chart-subtitle">VanEck BDC Income ETF | Source: VanEck / Yahoo Finance. Past performance is not indicative of future results.</div>
+<canvas id="chartPC" style="height:280px;"></canvas>
+<div class="chart-legend">
+<span class="legend-item"><span class="legend-swatch" style="background:#2F6FA3"></span>BIZD (BDC Index)</span>
+<span class="legend-item"><span class="legend-swatch" style="background:#A9C8E3"></span>Bloomberg US Agg (reference)</span>
+</div>
+</div>
+<p class="pc-disclaimer">BIZD is shown here as a market-level proxy for the direct lending / private credit asset class and is not a recommended investment vehicle for client portfolios. Investments in private credit involve significant risks including credit risk, illiquidity, and the potential for loss of principal. Past performance does not guarantee future results.</p>
+</div>
+</div>
+
+<!-- MODEL HOLDINGS -->
+
+<div class="section-block" id="sec-model-holdings">
+<div class="section-header"><h2>Private Capital Model Holdings</h2></div>
+<div class="section-body">
+<p>The following three strategies are currently held within LiveWell Capital's Private Capital model portfolios. Each is selected for its differentiated access, structural advantages, and fit within the broader portfolio construction framework.</p>
+<div class="holding-grid">
+
+```
+<!-- MONROE -->
+<div class="holding-card">
+<div class="holding-header">
+<div class="holding-logo-name">
+<img class="holding-logo" src="https://logo.clearbit.com/monroecapital.com" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" alt="Monroe">
+<div class="holding-logo-fallback" style="display:none;">MPC</div>
+<div class="holding-name">Monroe Private Capital Income Plus</div>
+</div>
+<span class="holding-type type-credit">Private Credit</span>
+</div>
+<a class="holding-link" href="https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Investment%20Committee/Alts%20presentations/Alts%202026%20Q1/Monroe%202026%20Q1%20presentation.pdf?csf=1&web=1&e=mJ3OOt" target="_blank">View Q1 2026 Presentation →</a>
+<div class="holding-stats">
+<div class="hstat"><span class="hstat-val">9.3%</span><span class="hstat-lbl">Annualized Return (ITD)</span></div>
+<div class="hstat"><span class="hstat-val">9.4%</span><span class="hstat-lbl">Distribution Rate (Ann.)</span></div>
+<div class="hstat"><span class="hstat-val">9.8%</span><span class="hstat-lbl">Wtd. Avg. Portfolio Yield</span></div>
+<div class="hstat"><span class="hstat-val">1.00%</span><span class="hstat-lbl">Mgmt. Fee (2026 Holiday)</span></div>
+</div>
+<ul class="holding-bullets">
+<li><strong>Alpha through Selection:</strong> Monroe's track record since 2004 — one of only 4% of managers operating before the GFC — delivers consistent, low-default returns through disciplined underwriting in a market with 500–600 bps of manager dispersion.</li>
+<li><strong>Lower Middle Market Advantage:</strong> Sole-agent status with superior pricing power, higher spreads, and financial covenants on 100% of direct deals — compared to covenant-lite structures common in larger transactions.</li>
+<li><strong>Economic Growth Engine:</strong> 180,000+ potential borrowers under $150M in revenue, often founder-led market leaders in resilient, defensive sectors.</li>
+<li><strong>2026 Fee Holiday:</strong> 25-bps management fee reduction for the full 2026 calendar year, lowering the base fee from 1.25% to 1.00%.</li>
+<li><strong>Monthly Distributions:</strong> Transitioned to monthly distribution payments in October 2025 for more consistent and predictable income.</li>
+</ul>
+</div>
+
+<!-- BPIF -->
+<div class="holding-card">
+<div class="holding-header">
+<div class="holding-logo-name">
+<img class="holding-logo" src="https://logo.clearbit.com/blackrock.com" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" alt="BlackRock">
+<div class="holding-logo-fallback" style="display:none;">BLK</div>
+<div class="holding-name">BlackRock Private Investments Fund (BPIF)</div>
+</div>
+<span class="holding-type type-equity">Private Equity</span>
+</div>
+<a class="holding-link" href="https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Investment%20Committee/Alts%20presentations/Alts%202026%20Q1/bpif-essentials-deck%20(2).pdf?csf=1&web=1&e=z5fADp" target="_blank">View Essentials Deck →</a>
+<div class="holding-stats">
+<div class="hstat"><span class="hstat-val">81%</span><span class="hstat-lbl">Global Co.'s >$100M Revenue That Are Private</span></div>
+<div class="hstat"><span class="hstat-val">12.5–13.4%</span><span class="hstat-lbl">PE Ann. Returns (5/10/15/20-Yr)</span></div>
+<div class="hstat"><span class="hstat-val">25+ Yrs</span><span class="hstat-lbl">BlackRock PE Team Experience</span></div>
+<div class="hstat"><span class="hstat-val">No</span><span class="hstat-lbl">Performance Fees</span></div>
+</div>
+<ul class="holding-bullets">
+<li><strong>Expanded Opportunity Set:</strong> 81% of global companies with over $100M in revenue are private — BPIF provides structured access to this universe unavailable through public equity alone.</li>
+<li><strong>Institutional-Grade Access:</strong> Side-by-side investment with large institutional clients, leveraging BlackRock's scale and 25+ years of PE experience.</li>
+<li><strong>Investor-Friendly Structure:</strong> Lower minimums, no performance fees, and simplified 1099 tax reporting — materially reducing cost and administrative complexity.</li>
+<li><strong>Quarterly Liquidity &amp; No Capital Calls:</strong> Anticipated quarterly liquidity (up to 5% of NAV), fully funded upfront — eliminating commitment uncertainty.</li>
+<li><strong>Strategic Diversification:</strong> Combines direct investments (attractive economics) with secondaries (diversification, reduced J-curve, proximity to realized value).</li>
+</ul>
+</div>
+
+<!-- JHEQX -->
+<div class="holding-card">
+<div class="holding-header">
+<div class="holding-logo-name">
+<img class="holding-logo" src="https://logo.clearbit.com/jpmorgan.com" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" alt="JPMorgan">
+<div class="holding-logo-fallback" style="display:none;">JPM</div>
+<div class="holding-name">JPMorgan Hedged Equity Fund (JHEQX)</div>
+</div>
+<span class="holding-type type-hedged">Hedged Equity</span>
+</div>
+<a class="holding-link" href="https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Investment%20Committee/Alts%20presentations/Alts%202026%20Q1/JP%20Hedge%20Equity.pdf?csf=1&web=1&e=Wqa2Uz" target="_blank">View Fund Overview →</a>
+<div class="holding-stats">
+<div class="hstat"><span class="hstat-val">7.53%</span><span class="hstat-lbl">Ann. Volatility (vs 14.52% S&amp;P 500)</span></div>
+<div class="hstat"><span class="hstat-val">-5% to -20%</span><span class="hstat-lbl">Hedged Drawdown Range</span></div>
+<div class="hstat"><span class="hstat-val">4★ / Bronze</span><span class="hstat-lbl">Morningstar (I Share, Dec 2025)</span></div>
+<div class="hstat"><span class="hstat-val">39 / 35 Yrs</span><span class="hstat-lbl">PM Experience (Reiner / Zingone)</span></div>
+</div>
+<ul class="holding-bullets">
+<li><strong>Participation with Protection:</strong> Participates in U.S. large-cap equity market gains while using a disciplined options overlay to mitigate risk during declining markets.</li>
+<li><strong>Put-Spread Collar Strategy:</strong> Hedges the portfolio against market drops between -5% and -20% — the range where most meaningful drawdowns occur over a market cycle.</li>
+<li><strong>Significantly Lower Volatility:</strong> 7.53% annualized volatility — less than half the S&P 500's 14.52%.</li>
+<li><strong>Constant, Systematic Hedging:</strong> Quarterly reset periods (last business day of March, June, September, and December), removing discretionary judgment from the process.</li>
+<li><strong>Recognized Quality:</strong> Morningstar Bronze Medalist Rating and 4-star Overall Rating for the I share class (JHEQX) as of December 31, 2025.</li>
+</ul>
+</div>
+
+</div>
+</div>
+```
+
+</div>
+
+<!-- LIQUID ALTERNATIVES -->
+
+<div class="section-block" id="sec-liquid-alts">
+<div class="section-header"><h2>Liquid Private Credit &amp; Additional Alternatives</h2></div>
+<div class="section-body">
+<p>The following strategies represent expanded access points within the alternatives universe — offering clients exposure to private credit, venture/growth equity, and flexible credit through more accessible structures including interval funds and liquid alternatives.</p>
+<div class="holding-grid">
+
+```
+<!-- CCLFX -->
+<div class="holding-card">
+<div class="holding-header">
+<div class="holding-logo-name">
+<img class="holding-logo" src="https://logo.clearbit.com/cliffwaterllc.com" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" alt="Cliffwater">
+<div class="holding-logo-fallback" style="display:none;">CLFW</div>
+<div class="holding-name">Cliffwater Corporate Lending Fund (CCLFX)</div>
+</div>
+<span class="holding-type type-credit">Liquid Private Credit</span>
+</div>
+<a class="holding-link" href="https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Investment%20Committee/Alts%20presentations/Alts%202026%20Q1/Cliffwater%20Lending%20presentation%20Q1%202026.pdf?csf=1&web=1&e=YvtZiU" target="_blank">View Q1 2026 Presentation →</a>
+<div class="holding-stats">
+<div class="hstat"><span class="hstat-val">$32.5B</span><span class="hstat-lbl">Net Assets</span></div>
+<div class="hstat"><span class="hstat-val">9.49%</span><span class="hstat-lbl">Ann. Return Since Jun 2019</span></div>
+<div class="hstat"><span class="hstat-val">9.5%</span><span class="hstat-lbl">Distribution Rate</span></div>
+<div class="hstat"><span class="hstat-val">4,100+</span><span class="hstat-lbl">Underlying Credits</span></div>
+</div>
+<ul class="holding-bullets">
+<li><strong>Scale and Multi-Lender Access:</strong> $32.5B in net assets with 30+ premier investment partners — breadth unavailable in most single-manager structures.</li>
+<li><strong>High-Quality, Defensive Portfolio:</strong> 97% first lien exposure and a conservative 41% average loan-to-value — among the most defensively positioned private credit vehicles available.</li>
+<li><strong>Strong Risk-Adjusted Track Record:</strong> 9.49% annualized return since June 2019 at just 1.71% standard deviation, vs. Bloomberg US Agg's 1.37% return at 5.80% deviation.</li>
+<li><strong>Massive Diversification:</strong> 4,100+ underlying credits, led by Information Technology (24%) and Health Care (17%).</li>
+<li><strong>Institutional Structure for RIAs:</strong> No subscription documents or investor qualification standards required. Ticker-symbol execution (CCLFX) with daily NAV.</li>
+</ul>
+</div>
+
+<!-- PFLEX -->
+<div class="holding-card">
+<div class="holding-header">
+<div class="holding-logo-name">
+<img class="holding-logo" src="https://logo.clearbit.com/pimco.com" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" alt="PIMCO">
+<div class="holding-logo-fallback" style="display:none;">PIMCO</div>
+<div class="holding-name">PIMCO Flexible Credit Income Fund (PFLEX)</div>
+</div>
+<span class="holding-type type-credit">Flexible Credit</span>
+</div>
+<a class="holding-link" href="https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Investment%20Committee/Alts%20presentations/Alts%202026%20Q1/PFLEX.pdf?csf=1&web=1&e=eU7bNF" target="_blank">View Fund Overview →</a>
+<div class="holding-stats">
+<div class="hstat"><span class="hstat-val">11.37%</span><span class="hstat-lbl">Yield to Worst</span></div>
+<div class="hstat"><span class="hstat-val">10.04%</span><span class="hstat-lbl">Distribution Rate (Monthly)</span></div>
+<div class="hstat"><span class="hstat-val">6.46%</span><span class="hstat-lbl">Ann. Return Since 2017 Inception</span></div>
+<div class="hstat"><span class="hstat-val">11.28%</span><span class="hstat-lbl">1-Year Return (Jan 31, 2026)</span></div>
+</div>
+<ul class="holding-bullets">
+<li><strong>Expansive Global Opportunity Set:</strong> $25 trillion+ investable universe including specialty finance, emerging markets, and asset-based credit.</li>
+<li><strong>Compelling Yield Potential:</strong> 11.37% yield to worst and a 10.04% distribution rate paid monthly.</li>
+<li><strong>Diversified Portfolio Construction:</strong> Residential Real Estate (25%), Commercial Real Estate (10%), alongside 47% corporate credit.</li>
+<li><strong>Strategic Price Advantage:</strong> Assets purchased at an average price in the mid-to-high 80s, seeking both high current income and capital appreciation as prices move toward par.</li>
+<li><strong>Interval Fund Access:</strong> Daily subscriptions, 1099 tax treatment, and anticipated quarterly liquidity (5% of outstanding shares).</li>
+</ul>
+</div>
+
+<!-- CADC -->
+<div class="holding-card">
+<div class="holding-header">
+<div class="holding-logo-name">
+<img class="holding-logo" src="https://logo.clearbit.com/aresmgmt.com" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" alt="Ares">
+<div class="holding-logo-fallback" style="display:none;">ARES</div>
+<div class="holding-name">CION Ares Diversified Credit Fund (CADC)</div>
+</div>
+<span class="holding-type type-credit">Private Credit</span>
+</div>
+<a class="holding-link" href="https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Investment%20Committee/Alts%20presentations/Alts%202026%20Q1/CADC-Investor-Deck.pdf?csf=1&web=1&e=9ZHmMV" target="_blank">View Investor Deck →</a>
+<div class="holding-stats">
+<div class="hstat"><span class="hstat-val">$391.5B</span><span class="hstat-lbl">Ares Total Credit AUM</span></div>
+<div class="hstat"><span class="hstat-val">6.97%</span><span class="hstat-lbl">Ann. Return Since Jul 2017 (CADUX)</span></div>
+<div class="hstat"><span class="hstat-val">8.48%</span><span class="hstat-lbl">Distribution Rate</span></div>
+<div class="hstat"><span class="hstat-val">92.4%</span><span class="hstat-lbl">Floating-Rate Instruments</span></div>
+</div>
+<ul class="holding-bullets">
+<li><strong>Established Credit Leadership &amp; Scale:</strong> CION and Ares Management joint venture delivering access to Ares' $391.5B credit platform with a 20+ year track record.</li>
+<li><strong>Defensive, Senior-Secured Posture:</strong> 88.9% in secured debt; covenants on 100% of European and 77% of U.S. invested capital — among the most covenant-protected vehicles available.</li>
+<li><strong>Attractive Risk-Adjusted Performance:</strong> 6.97% annualized return at just 3.62% standard deviation since July 2017 inception.</li>
+<li><strong>Granular Global Diversification:</strong> 977 issuers, 24 industries, 10 credit sectors with average position size under 0.50%.</li>
+<li><strong>Accessible Institutional Structure:</strong> No accredited investor qualification required — daily NAV, 1099 tax reporting, quarterly liquidity.</li>
+</ul>
+</div>
+
+<!-- P-PEXX -->
+<div class="holding-card">
+<div class="holding-header">
+<div class="holding-logo-name">
+<img class="holding-logo" src="https://logo.clearbit.com/pantheon.com" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" alt="Pantheon">
+<div class="holding-logo-fallback" style="display:none;">PAN</div>
+<div class="holding-name">AMG Pantheon Fund (P-PEXX)</div>
+</div>
+<span class="holding-type type-equity">Private Equity</span>
+</div>
+<a class="holding-link" href="https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Investment%20Committee/Alts%20presentations/Alts%202026%20Q1/P-PEXX-Client-Presentation-Q1%202026.pdf?csf=1&web=1&e=5sjTNd" target="_blank">View Q1 2026 Presentation →</a>
+<div class="holding-stats">
+<div class="hstat"><span class="hstat-val">12.07%</span><span class="hstat-lbl">Ann. Return Since 2015 Inception</span></div>
+<div class="hstat"><span class="hstat-val">5.86%</span><span class="hstat-lbl">Std. Dev. (vs. 14.56% MSCI World)</span></div>
+<div class="hstat"><span class="hstat-val">-4.84%</span><span class="hstat-lbl">Max Drawdown (vs. -25.42% MSCI World)</span></div>
+<div class="hstat"><span class="hstat-val">$82.3B</span><span class="hstat-lbl">Pantheon AUM</span></div>
+</div>
+<ul class="holding-bullets">
+<li><strong>Institutional Access to Global Private Markets:</strong> Leverages Pantheon's $82.3B AUM platform and database of 10,900+ GPs — one of the deepest PE sourcing networks globally.</li>
+<li><strong>Proven Outperformance with Lower Volatility:</strong> 12.07% annualized return since 2015, std. dev. of 5.86% vs. 14.56% for MSCI World, max drawdown of -4.84% vs. -25.42%.</li>
+<li><strong>Solves Traditional PE Challenges:</strong> Evergreen vehicle with no capital calls, immediate portfolio exposure to dampen J-Curve, and quarterly liquidity (up to 5% of NAV).</li>
+<li><strong>Fee-Efficient Portfolio Construction:</strong> Secondaries (51%), Co-investments (41%), Primaries (9%) — co-investments generally carry no underlying management fees or carried interest.</li>
+<li><strong>Deeply Diversified:</strong> 411 investments across 181 managers, weighted toward Technology (29%) and Healthcare (17%), spanning North America (62%) and Europe (34%).</li>
+</ul>
+</div>
+
+<!-- SPRING -->
+<div class="holding-card">
+<div class="holding-header">
+<div class="holding-logo-name">
+<img class="holding-logo" src="https://logo.clearbit.com/stepstonegroup.com" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" alt="StepStone">
+<div class="holding-logo-fallback" style="display:none;">STEP</div>
+<div class="holding-name">StepStone Private Venture &amp; Growth Fund (SPRING)</div>
+</div>
+<span class="holding-type type-equity">Private Venture &amp; Growth</span>
+</div>
+<a class="holding-link" href="https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Investment%20Committee/Alts%20presentations/Alts%202026%20Q1/StepStone%20Private%20Venture%20and%20Growth%20Fund%20February.pdf?csf=1&web=1&e=HM90k2" target="_blank">View February Presentation →</a>
+<div class="holding-stats">
+<div class="hstat"><span class="hstat-val">29.07%</span><span class="hstat-lbl">Ann. Return Since Nov 2022 Inception</span></div>
+<div class="hstat"><span class="hstat-val">38.79%</span><span class="hstat-lbl">2025 Calendar Year Return</span></div>
+<div class="hstat"><span class="hstat-val">$811B</span><span class="hstat-lbl">StepStone Total Capital Responsibility</span></div>
+<div class="hstat"><span class="hstat-val">2,000+</span><span class="hstat-lbl">Portfolio Companies</span></div>
+</div>
+<ul class="holding-bullets">
+<li><strong>Elite Access to the Innovation Economy:</strong> Broadly diversified gateway to global venture and growth managers, leveraging a team sourcing over 4,600 deals annually.</li>
+<li><strong>Proven Alpha Generation:</strong> 29.07% annualized return since inception; 38.79% for the 2025 calendar year.</li>
+<li><strong>Superior Risk-Adjusted Profile:</strong> Standard deviation of 7.67% vs. 16.33% for the NASDAQ Composite since inception.</li>
+<li><strong>Broad Diversification &amp; J-Curve Mitigation:</strong> 2,000+ portfolio companies and 103 fund managers; 64% in secondaries reduces J-curve exposure.</li>
+<li><strong>Strategic Sector Alignment:</strong> 58.1% in Information Technology and 20.5% in Industrials.</li>
+</ul>
+</div>
+
+</div>
+</div>
+```
+
+</div>
+
+</div>
+</div><!-- /page-private -->
+
+<!-- ══════════════════════════════════════════ -->
+
+<!-- PAGE: MODEL PORTFOLIOS -->
+
+<!-- ══════════════════════════════════════════ -->
+
+<div id="page-models" class="page">
+<div class="container">
+<div class="section-block">
+<div class="section-header"><h2>LiveWell Model Portfolios</h2></div>
+<div class="section-body">
+<div class="info-box">
+<h4>📊 Performance Data</h4>
+<p>Click any model below to view the tearsheet with detailed performance data, holdings, and allocation details. All models are actively managed by the LiveWell Wealth Management Department.</p>
+<p><strong>Updated:</strong> Monthly | <a href="https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Reporting/February%202026%20LWC%20Performance.pdf?csf=1&web=1&e=JDkJdh" target="_blank" style="color:var(--exec);font-weight:600;">View Full Performance Report →</a></p>
+</div>
+
+```
+<h3>Retirement Income Models</h3>
+<div class="model-grid">
+<div class="model-card" onclick="window.open('https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Models%20for%20Y-Charts/Tearsheets%20Y-Charts%20ENV2%20models/3%25%20Retirement%20Income%207030.pdf?csf=1&web=1&e=Ngngrw','_blank')"><h4>LWC 3% Retirement Income</h4><p class="model-type">70/30 Allocation</p><div class="allocation-bar"><div class="alloc-eq" style="width:70%">70%</div><div class="alloc-fi" style="width:30%">30%</div></div><span class="link-icon">View Tearsheet →</span></div>
+<div class="model-card" onclick="window.open('https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Models%20for%20Y-Charts/Tearsheets%20Y-Charts%20ENV2%20models/4%25%20Retirement%20Income%206040.pdf?csf=1&web=1&e=XeJYzJ','_blank')"><h4>LWC 4% Retirement Income</h4><p class="model-type">60/40 Allocation</p><div class="allocation-bar"><div class="alloc-eq" style="width:60%">60%</div><div class="alloc-fi" style="width:40%">40%</div></div><span class="link-icon">View Tearsheet →</span></div>
+<div class="model-card" onclick="window.open('https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Models%20for%20Y-Charts/Tearsheets%20Y-Charts%20ENV2%20models/5%25%20Retirement%20Income%205050.pdf?csf=1&web=1&e=JoRLlt','_blank')"><h4>LWC 5% Retirement Income</h4><p class="model-type">50/50 Allocation</p><div class="allocation-bar"><div class="alloc-eq" style="width:50%">50%</div><div class="alloc-fi" style="width:50%">50%</div></div><span class="link-icon">View Tearsheet →</span></div>
+<div class="model-card" onclick="window.open('https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Models%20for%20Y-Charts/Tearsheets%20Y-Charts%20ENV2%20models/.LWC%207%20Year%20Protected%20Income.pdf?csf=1&web=1&e=lJcuv1','_blank')"><h4>LWC 7-Year Protected Income</h4><p class="model-type">Income Focused</p><span class="link-icon">View Tearsheet →</span></div>
+</div>
+
+<h3>Core Models</h3>
+<div class="model-grid">
+<div class="model-card" onclick="window.open('https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Models%20for%20Y-Charts/Tearsheets%20Y-Charts%20ENV2%20models/.LWC%20Core%202080.pdf?csf=1&web=1&e=zyLhA0','_blank')"><h4>LWC Core 20/80</h4><p class="model-type">Conservative</p><div class="allocation-bar"><div class="alloc-eq" style="width:20%">20%</div><div class="alloc-fi" style="width:80%">80%</div></div><span class="link-icon">View Tearsheet →</span></div>
+<div class="model-card" onclick="window.open('https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Models%20for%20Y-Charts/Tearsheets%20Y-Charts%20ENV2%20models/.LWC%20Core%203070.pdf?csf=1&web=1&e=3qo5Fx','_blank')"><h4>LWC Core 30/70</h4><p class="model-type">Conservative</p><div class="allocation-bar"><div class="alloc-eq" style="width:30%">30%</div><div class="alloc-fi" style="width:70%">70%</div></div><span class="link-icon">View Tearsheet →</span></div>
+<div class="model-card" onclick="window.open('https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Models%20for%20Y-Charts/Tearsheets%20Y-Charts%20ENV2%20models/.LWC%20Core%204060.pdf?csf=1&web=1&e=1BrR6b','_blank')"><h4>LWC Core 40/60</h4><p class="model-type">Moderate Conservative</p><div class="allocation-bar"><div class="alloc-eq" style="width:40%">40%</div><div class="alloc-fi" style="width:60%">60%</div></div><span class="link-icon">View Tearsheet →</span></div>
+<div class="model-card" onclick="window.open('https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Models%20for%20Y-Charts/Tearsheets%20Y-Charts%20ENV2%20models/.LWC%20Core%205050.pdf?csf=1&web=1&e=L4b2b9','_blank')"><h4>LWC Core 50/50</h4><p class="model-type">Moderate</p><div class="allocation-bar"><div class="alloc-eq" style="width:50%">50%</div><div class="alloc-fi" style="width:50%">50%</div></div><span class="link-icon">View Tearsheet →</span></div>
+<div class="model-card" onclick="window.open('https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Models%20for%20Y-Charts/Tearsheets%20Y-Charts%20ENV2%20models/.LWC%20Core%206040.pdf?csf=1&web=1&e=FeiQyx','_blank')"><h4>LWC Core 60/40</h4><p class="model-type">Moderate Aggressive</p><div class="allocation-bar"><div class="alloc-eq" style="width:60%">60%</div><div class="alloc-fi" style="width:40%">40%</div></div><span class="link-icon">View Tearsheet →</span></div>
+<div class="model-card" onclick="window.open('https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Models%20for%20Y-Charts/Tearsheets%20Y-Charts%20ENV2%20models/.LWC%20Core%207030.pdf?csf=1&web=1&e=xQkbrI','_blank')"><h4>LWC Core 70/30</h4><p class="model-type">Aggressive</p><div class="allocation-bar"><div class="alloc-eq" style="width:70%">70%</div><div class="alloc-fi" style="width:30%">30%</div></div><span class="link-icon">View Tearsheet →</span></div>
+<div class="model-card" onclick="window.open('https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Models%20for%20Y-Charts/Tearsheets%20Y-Charts%20ENV2%20models/.LWC%20Core%208020.pdf?csf=1&web=1&e=36E0br','_blank')"><h4>LWC Core 80/20</h4><p class="model-type">Aggressive</p><div class="allocation-bar"><div class="alloc-eq" style="width:80%">80%</div><div class="alloc-fi" style="width:20%">20%</div></div><span class="link-icon">View Tearsheet →</span></div>
+<div class="model-card" onclick="window.open('https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Models%20for%20Y-Charts/Tearsheets%20Y-Charts%20ENV2%20models/.LWC%20Core%209010.pdf?csf=1&web=1&e=EV6aaq','_blank')"><h4>LWC Core 90/10</h4><p class="model-type">Very Aggressive</p><div class="allocation-bar"><div class="alloc-eq" style="width:90%">90%</div><div class="alloc-fi" style="width:10%">10%</div></div><span class="link-icon">View Tearsheet →</span></div>
+<div class="model-card" onclick="window.open('https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Models%20for%20Y-Charts/Tearsheets%20Y-Charts%20ENV2%20models/.LWC%20Core%20982.pdf?csf=1&web=1&e=y9exR4','_blank')"><h4>LWC Core 98/02</h4><p class="model-type">Maximum Growth</p><div class="allocation-bar"><div class="alloc-eq" style="width:98%">98%</div><div class="alloc-fi" style="width:2%">2%</div></div><span class="link-icon">View Tearsheet →</span></div>
+</div>
+
+<h3>Private Client Models</h3>
+<div class="info-box"><p><strong>Eligibility:</strong> Individual Equities for Accounts/Groups above $2M</p></div>
+<div class="model-grid">
+<div class="model-card" onclick="window.open('https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Models%20for%20Y-Charts/Tearsheets%20Y-Charts%20ENV2%20models/.LWC%20Private%20Client%206040.pdf?csf=1&web=1&e=RTwJWL','_blank')"><h4>LWC Private Client 60/40</h4><p class="model-type">Moderate Aggressive</p><div class="allocation-bar"><div class="alloc-eq" style="width:60%">60%</div><div class="alloc-fi" style="width:40%">40%</div></div><span class="link-icon">View Tearsheet →</span></div>
+<div class="model-card" onclick="window.open('https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Models%20for%20Y-Charts/Tearsheets%20Y-Charts%20ENV2%20models/.LWC%20Private%20Client%207030.pdf?csf=1&web=1&e=ol7T8w','_blank')"><h4>LWC Private Client 70/30</h4><p class="model-type">Aggressive</p><div class="allocation-bar"><div class="alloc-eq" style="width:70%">70%</div><div class="alloc-fi" style="width:30%">30%</div></div><span class="link-icon">View Tearsheet →</span></div>
+<div class="model-card" onclick="window.open('https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Models%20for%20Y-Charts/Tearsheets%20Y-Charts%20ENV2%20models/.LWC%20Private%20Client%208020.pdf?csf=1&web=1&e=UjC6ns','_blank')"><h4>LWC Private Client 80/20</h4><p class="model-type">Aggressive</p><div class="allocation-bar"><div class="alloc-eq" style="width:80%">80%</div><div class="alloc-fi" style="width:20%">20%</div></div><span class="link-icon">View Tearsheet →</span></div>
+<div class="model-card" onclick="window.open('https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Models%20for%20Y-Charts/Tearsheets%20Y-Charts%20ENV2%20models/.LWC%20Private%20Client%209010.pdf?csf=1&web=1&e=ysmAQe','_blank')"><h4>LWC Private Client 90/10</h4><p class="model-type">Very Aggressive</p><div class="allocation-bar"><div class="alloc-eq" style="width:90%">90%</div><div class="alloc-fi" style="width:10%">10%</div></div><span class="link-icon">View Tearsheet →</span></div>
+</div>
+
+<h3>Private Capital Models</h3>
+<div class="warning-box"><p><strong>Eligibility Requirements:</strong> $2M Accredited Investor / $5M Qualified Purchaser</p></div>
+<div class="model-grid">
+<div class="model-card" onclick="window.open('https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Models%20for%20Y-Charts/Tearsheets%20Y-Charts%20ENV2%20models/LWC%20Private%20Capital%2010%25%2060_40%20Risk%20Equivalent.pdf?csf=1&web=1&e=QwNfDq','_blank')"><h4>LWC Private Capital 60/40</h4><p class="model-type">Risk Equivalent</p><div class="allocation-bar"><div class="alloc-eq" style="width:60%">60%</div><div class="alloc-fi" style="width:40%">40%</div></div><span class="link-icon">View Tearsheet →</span></div>
+<div class="model-card" onclick="window.open('https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Models%20for%20Y-Charts/Tearsheets%20Y-Charts%20ENV2%20models/LWC%20Private%20Capital%2015%25%2070_30%20Risk%20Equivalent.pdf?csf=1&web=1&e=gDd0i3','_blank')"><h4>LWC Private Capital 70/30</h4><p class="model-type">Risk Equivalent</p><div class="allocation-bar"><div class="alloc-eq" style="width:70%">70%</div><div class="alloc-fi" style="width:30%">30%</div></div><span class="link-icon">View Tearsheet →</span></div>
+<div class="model-card" onclick="window.open('https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Models%20for%20Y-Charts/Tearsheets%20Y-Charts%20ENV2%20models/LWC%20Private%20Capital%2020%25%2080_20%20Risk%20Equivalent.pdf?csf=1&web=1&e=DEzcco','_blank')"><h4>LWC Private Capital 80/20</h4><p class="model-type">Risk Equivalent</p><div class="allocation-bar"><div class="alloc-eq" style="width:80%">80%</div><div class="alloc-fi" style="width:20%">20%</div></div><span class="link-icon">View Tearsheet →</span></div>
+</div>
+</div>
+```
+
+</div>
+</div>
+</div><!-- /page-models -->
+
+<!-- ══════════════════════════════════════════ -->
+
+<!-- PAGE: RESOURCES -->
+
+<!-- ══════════════════════════════════════════ -->
+
+<div id="page-resources" class="page">
+<div class="container">
+<div class="section-block">
+<div class="section-header"><h2>Additional Resources</h2></div>
+<div class="section-body">
+<div class="card-grid">
+<div class="card"><h4>📊 Model Performance Dashboard</h4><p>Real-time performance tracking for all LiveWell managed models with interactive charts.</p><a href="https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Reporting/February%202026%20LWC%20Performance.pdf?csf=1&web=1&e=JDkJdh" target="_blank" style="color:var(--exec);font-weight:600;">View Performance Report →</a></div>
+<div class="card"><h4>📈 YCharts Analysis</h4><p>Access comprehensive portfolio analytics, benchmarking, and risk metrics.</p><a href="https://ycharts.com/dashboard/#/?dashboardId=-1" target="_blank" style="color:var(--exec);font-weight:600;">Open YCharts →</a></div>
+<div class="card"><h4>📧 Contact Investment Strategy</h4><p>Questions or need clarification on any positioning or recommendations?</p><a href="/cdn-cgi/l/email-protection#650c0b1300161108000b11161117041100021c25090c1300120009090604150c1104094b060a08" style="color:var(--exec);font-weight:600;">Email Team →</a></div>
+</div>
+</div>
+</div>
+</div>
+</div><!-- /page-resources -->
+
+<!-- ── FOOTER ── -->
+
+<footer>
+<p><strong>LiveWell Capital | Wealth Management Department</strong></p>
+<p>Monthly Insights — For Internal Use Only &nbsp;|&nbsp; Confidential and Proprietary</p>
+<p style="margin-top:0.6rem;font-size:0.78rem;opacity:0.6;">© 2026 LiveWell Capital. All rights reserved. | March 2026 Edition</p>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+
+// ══════════════════════════════
+// PAGE NAVIGATION
+// ══════════════════════════════
+const pages = [‘home’,‘market’,‘asset’,‘private’,‘models’,‘resources’];
+function showPage(id) {
+pages.forEach(p => {
+const el = document.getElementById(‘page-’ + p);
+if (el) el.classList.toggle(‘active’, p === id);
+});
+document.querySelectorAll(‘nav.main-nav > ul > li > a’).forEach(a => a.classList.remove(‘active’));
+const navMap = { home:‘nav-home’, models:‘nav-models’, resources:‘nav-resources’ };
+if (navMap[id]) { const el = document.getElementById(navMap[id]); if(el) el.classList.add(‘active’); }
+window.scrollTo({ top: 0, behavior: ‘smooth’ });
+// Re-render charts if switching to a page with them
+setTimeout(() => { renderCharts(); }, 100);
+return false;
+}
+
+function scrollTo(id) {
+setTimeout(() => {
+const el = document.getElementById(id);
+if (el) el.scrollIntoView({ behavior: ‘smooth’, block: ‘start’ });
+}, 150);
+}
+
+// ══════════════════════════════
+// TILTS IMAGE
+// ══════════════════════════════
+const TILTS_B64 = ‘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’;
+// (abbreviated — full base64 loaded from original file)
+document.querySelectorAll(’#tiltsImg’).forEach(img => {
+img.src = ‘data:image/png;base64,’ + TILTS_B64;
+});
+
+// ══════════════════════════════
+// CHART.JS CHARTS
+// ══════════════════════════════
+const NAVY = ‘#163F5F’, EXEC = ‘#2F6FA3’, LIGHT = ‘#A9C8E3’;
+const chartInstances = {};
+
+const febLabels = [‘Jan 31’,‘Feb 3’,‘Feb 5’,‘Feb 7’,‘Feb 10’,‘Feb 12’,‘Feb 14’,‘Feb 18’,‘Feb 20’,‘Feb 24’,‘Feb 27’,‘Feb 28’];
+const marketData = {
+sp500: [0.00, 0.60,-1.90,-1.20,-0.80,-1.00,-0.40,-1.60,-1.10,-0.50, 0.10,-0.87],
+dow: [0.00, 1.20, 0.20, 0.90, 1.10, 0.80, 1.50, 0.60, 1.10, 0.80, 0.30, 0.17],
+nasdaq: [0.00, 0.40,-2.20,-1.40,-2.60,-3.20,-2.20,-3.60,-2.80,-2.00,-2.50,-3.38]
+};
+
+const ytdLabels = [‘Jan 2’,‘Jan 8’,‘Jan 15’,‘Jan 22’,‘Jan 29’,‘Feb 5’,‘Feb 12’,‘Feb 19’,‘Feb 28’];
+const valueData = [0.00, 3.20, 4.00, 4.20, 5.00, 6.00, 6.20, 6.80, 7.28];
+const growthData = [0.00,-0.40,-2.20,-0.80,-1.00,-2.40,-5.20,-4.00,-4.82];
+const emData = [0.00, 3.50, 5.20, 6.00, 8.00, 9.40, 10.00, 12.00, 14.69];
+const euData = [0.00, 1.80, 3.20, 4.40, 5.00, 5.40, 5.80, 6.80, 7.68];
+const usaData = [0.00, 1.20, 0.80, 0.60, 0.20, 0.40, 0.00, 0.40, 0.23];
+
+const peatrYears = [‘2019’,‘2020’,‘2021’,‘2022’,‘2023’,‘2024’];
+const peatrReturns = [34.23,17.38,40.02,-31.98,43.67,28.86];
+const sp500Ref = [31.5,18.4,28.7,-18.1,26.3,25.0];
+
+const bizdYears = [‘2020’,‘2021’,‘2022’,‘2023’,‘2024’];
+const bizdReturns = [-6.84,36.16,-8.63,27.06,15.70];
+const aggRef = [7.5,-1.5,-13.0,5.5,1.3];
+
+function lineDS(label, color, data) {
+return {
+label, data,
+borderColor: color, backgroundColor: color + ‘18’,
+borderWidth: 2.2, pointRadius: 0, pointHoverRadius: 5,
+tension: 0.35, fill: true
+};
+}
+
+function barDS(label, color, data) {
+return {
+label, data,
+backgroundColor: data.map(v => v >= 0 ? color + ‘CC’ : ‘#D04040CC’),
+borderColor: data.map(v => v >= 0 ? color : ‘#A02020’),
+borderWidth: 1, borderRadius: 4
+};
+}
+
+const chartDefs = {
+chartMarket: { type:‘line’, labels:febLabels, datasets:[lineDS(‘S&P 500’,NAVY,marketData.sp500), lineDS(‘Dow Jones’,EXEC,marketData.dow), lineDS(‘Nasdaq’,LIGHT,marketData.nasdaq)] },
+chartMarket2: { type:‘line’, labels:febLabels, datasets:[lineDS(‘S&P 500’,NAVY,marketData.sp500), lineDS(‘Dow Jones’,EXEC,marketData.dow), lineDS(‘Nasdaq’,LIGHT,marketData.nasdaq)] },
+chartSector: { type:‘line’, labels:ytdLabels, datasets:[lineDS(‘R1000 Value’,NAVY,valueData), lineDS(‘R1000 Growth’,EXEC,growthData)] },
+chartIntl: { type:‘line’, labels:ytdLabels, datasets:[lineDS(‘MSCI EM’,NAVY,emData), lineDS(‘MSCI Europe’,EXEC,euData), lineDS(‘MSCI USA’,LIGHT,usaData)] },
+chartPE: { type:‘bar’, labels:peatrYears, datasets:[barDS(’^PEATR’,NAVY,peatrReturns), barDS(‘S&P 500’,LIGHT,sp500Ref)] },
+chartPC: { type:‘bar’, labels:bizdYears, datasets:[barDS(‘BIZD’,EXEC,bizdReturns), barDS(‘Bloomberg Agg’,LIGHT,aggRef)] }
+};
+
+function renderCharts() {
+Object.entries(chartDefs).forEach(([id, def]) => {
+const canvas = document.getElementById(id);
+if (!canvas) return;
+if (chartInstances[id]) { chartInstances[id].destroy(); }
+chartInstances[id] = new Chart(canvas, {
+type: def.type,
+data: { labels: def.labels, datasets: def.datasets },
+options: {
+responsive: true,
+maintainAspectRatio: false,
+interaction: { mode:‘index’, intersect:false },
+plugins: {
+legend: { display: false },
+tooltip: {
+callbacks: { label: ctx => ctx.dataset.label + ‘: ’ + (ctx.parsed.y >= 0 ? ‘+’ : ‘’) + ctx.parsed.y.toFixed(2) + ‘%’ }
+}
+},
+scales: {
+x: { grid: { color:’#EAF0F5’ }, ticks: { color:’#7A92A8’, font:{size:11} } },
+y: {
+grid: { color:’#EAF0F5’ },
+ticks: { color:’#7A92A8’, font:{size:11}, callback: v => (v>=0?’+’:’’)+v+’%’ },
+border: { dash: [4,4] }
+}
+}
+}
+});
+});
+}
+
+// ══════════════════════════════
+// NORTHWESTERN MUTUAL WEEKLY COMMENTARY
+// ══════════════════════════════
+
+// Current week hardcoded — update this each Monday with the new article
+const NM_CURRENT = {
+title: “Rising Oil Prices Weigh on Inflation”,
+date: “March 16, 2026”,
+url: “https://www.northwesternmutual.com/life-and-money/rising-oil-prices-weigh-on-inflation/”,
+img: “https://media.northwesternmutual.com/images/378x213/article/featured/stocksy_txp0290ee68jnf400_medium_3759587.jpg”
+};
+
+async function loadNews() {
+const container = document.getElementById(‘news-container’);
+const banner = document.getElementById(‘wmc-banner’);
+
+// Update the section header with the Monday date
+if (banner) {
+const d = new Date(NM_CURRENT.date);
+const opts = { month: ‘long’, day: ‘numeric’, year: ‘numeric’ };
+banner.textContent = ‘📊 Week of ’ + d.toLocaleDateString(‘en-US’, opts) + ’ — Weekly Market Commentary’;
+}
+
+// Try to fetch the NM page via CORS proxy to get the latest article dynamically
+// Falls back to hardcoded current article if blocked
+try {
+const NM_URL = ‘https://www.northwesternmutual.com/life-and-money/market-commentary/weekly-market-commentary/’;
+const res = await fetch(‘https://api.allorigins.win/get?url=’ + encodeURIComponent(NM_URL));
+if (!res.ok) throw new Error(‘proxy failed’);
+const data = await res.json();
+
+```
+// Parse the HTML to extract the first article
+const parser = new DOMParser();
+const doc = parser.parseFromString(data.contents, 'text/html');
+
+// NM article cards have anchor tags with h3 inside
+const firstCard = doc.querySelector('a[href*="/life-and-money/"]');
+const h3 = firstCard ? firstCard.querySelector('h3') : null;
+const img = firstCard ? firstCard.querySelector('img') : null;
+// Date text — look for the date span near the article
+const dateText = firstCard ? (firstCard.closest('li')?.querySelector('a[href]')?.textContent?.trim() || '') : '';
+
+if (h3 && firstCard) {
+const title = h3.textContent.trim();
+const href = firstCard.href || firstCard.getAttribute('href') || NM_CURRENT.url;
+const imgSrc = img ? img.src || img.getAttribute('src') : null;
+renderBanner(container, { title, url: href, img: imgSrc, date: NM_CURRENT.date });
+return;
+}
+throw new Error('could not parse');
+```
+
+} catch(e) {
+// Use hardcoded current article
+renderBanner(container, NM_CURRENT);
+}
+}
+
+function renderBanner(container, article) {
+const imgHtml = article.img
+? `<img class="wmc-banner-img" src="${article.img}" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"> <div class="wmc-banner-img-fallback" style="display:none;">📈</div>`
+: `<div class="wmc-banner-img-fallback">📈</div>`;
+
+container.innerHTML = ` <a class="wmc-banner" href="${article.url}" target="_blank" rel="noopener"> ${imgHtml} <div class="wmc-banner-body"> <div class="wmc-tag">Northwestern Mutual · Weekly Market Commentary</div> <div class="wmc-title">${article.title}</div> <div class="wmc-date">${article.date}</div> <span class="wmc-cta">Read Full Commentary →</span> </div> </a>`;
+}
+
+// ══════════════════════════════
+// INIT
+// ════════
