@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LiveWell Capital — Monthly Insights | April 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ── LIVEWELL COLOR SYSTEM ── */
+:root {
+  --navy:    #163F5F;
+  --exec:    #2F6FA3;
+  --light:   #A9C8E3;
+  --pale:    #D6E4EF;
+  --bg:      #C8DCE8;
+  --card:    #FFFFFF;
+  --charcoal:#2B2B2B;
+  --border:  #8AAFC8;
+  --accent:  #0E2D44;
+}
+
+/* ── RESET ── */
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--charcoal);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ── HEADER ── */
+.site-header {
+  background: var(--navy);
+  color: #fff;
+  padding: 1.6rem 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 5px solid var(--exec);
+  position: sticky; top: 0; z-index: 300;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+}
+.hdr-brand h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.65rem; font-weight: 700; letter-spacing: 1.5px;
+}
+.hdr-brand p { font-size: 0.74rem; font-weight: 300; letter-spacing: 2px; opacity: 0.75; text-transform: uppercase; margin-top: 0.15rem; }
+.hdr-date {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem; color: var(--light); font-weight: 400;
+}
+
+/* ── NAV — using BUTTONS, no href conflicts ── */
+.main-nav {
+  background: var(--exec);
+  position: sticky; top: 88px; z-index: 200;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.25);
+}
+.main-nav ul { display:flex; list-style:none; justify-content:center; flex-wrap:wrap; margin:0; padding:0; }
+.main-nav > ul > li { position: relative; }
+
+/* Top-level nav buttons */
+.main-nav > ul > li > a.nav-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  padding: 0.9rem 1.15rem;
+  display: block;
+  text-decoration: none;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+.main-nav > ul > li > a.nav-btn:hover {
+  background: var(--navy);
+}
+
+
+
+/* ── PAGE SYSTEM ── */
+
+
+
+
+/* ── LAYOUT ── */
+.container { max-width: 1400px; margin: 0 auto; padding: 2.5rem 2rem; }
+
+/* ── SECTION BLOCKS ── */
+.sb { margin-bottom: 2.5rem; }
+.sb-head {
+  background: var(--navy);
+  color: #fff;
+  padding: 1.2rem 1.8rem;
+  border-radius: 8px 8px 0 0;
+  border-bottom: 3px solid var(--exec);
+}
+.sb-head h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.45rem; font-weight: 700; letter-spacing: 0.4px;
+}
+.sb-body {
+  background: var(--card);
+  padding: 2rem;
+  border: 2px solid var(--navy);
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+}
+.sb-body h3 { color: var(--exec); font-size: 1.1rem; margin: 1.4rem 0 0.7rem; font-weight: 600; }
+.sb-body h3:first-child { margin-top: 0; }
+.sb-body p { margin-bottom: 0.85rem; line-height: 1.8; font-size: 0.94rem; }
+
+/* ── STATS ROW ── */
+.stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: 1rem; margin: 1.2rem 0; }
+.stat-box {
+  background: var(--navy);
+  color: #fff; padding: 1.3rem 1rem;
+  border-radius: 8px; text-align: center;
+  box-shadow: 0 3px 10px rgba(22,63,95,0.3);
+}
+.stat-box .num { font-family:'Playfair Display',serif; font-size: 1.8rem; font-weight: 700; color: var(--light); line-height: 1; margin-bottom: 0.3rem; }
+.stat-box .lbl { font-size: 0.78rem; font-weight: 500; opacity: 0.85; }
+
+/* ── INFO / WARNING BOXES ── */
+.info-box  { background: #E4F0F9; border-left: 5px solid var(--exec); padding: 1.1rem 1.3rem; border-radius: 4px; margin: 1.2rem 0; }
+.info-box h4 { color: var(--navy); font-weight: 700; margin-bottom: 0.4rem; font-size: 0.93rem; }
+.warn-box  { background: #FFF3E0; border-left: 5px solid #E6820A; padding: 1.1rem 1.3rem; border-radius: 4px; margin: 1.2rem 0; }
+.warn-box h4 { color: #A85D00; font-weight: 700; margin-bottom: 0.4rem; font-size: 0.93rem; }
+
+/* ── CARD GRID ── */
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 1.4rem; margin-top: 1.2rem; }
+.card {
+  background: var(--card);
+  border: 2px solid var(--exec);
+  border-radius: 8px; padding: 1.3rem;
+  box-shadow: 0 2px 8px rgba(22,63,95,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.card:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(22,63,95,0.18); }
+.card h4 { color: var(--navy); font-size: 1rem; font-weight: 700; margin-bottom: 0.55rem; }
+.card p  { font-size: 0.87rem; line-height: 1.7; }
+
+/* ── CHART WRAP ── */
+.chart-wrap {
+  background: var(--card);
+  border: 2px solid var(--exec);
+  border-radius: 8px; padding: 1.4rem;
+  margin: 1.2rem 0;
+  box-shadow: 0 2px 8px rgba(22,63,95,0.1);
+}
+.chart-title  { color: var(--navy); font-size: 1rem; font-weight: 700; text-align: center; margin-bottom: 0.2rem; }
+.chart-subtitle { color: #7A92A8; font-size: 0.74rem; text-align: center; margin-bottom: 0.9rem; font-style: italic; }
+.chart-legend { display: flex; gap: 1.4rem; justify-content: center; margin-top: 0.8rem; flex-wrap: wrap; }
+.legend-item  { display: flex; align-items: center; gap: 0.4rem; font-size: 0.81rem; font-weight: 600; }
+.legend-swatch { width: 13px; height: 13px; border-radius: 2px; flex-shrink: 0; }
+
+/* ── TABLE ── */
+table { width: 100%; border-collapse: collapse; margin: 1.2rem 0; background: var(--card); border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(22,63,95,0.1); }
+thead { background: var(--exec); color: #fff; }
+th { padding: 0.9rem 1rem; text-align: left; font-weight: 600; font-size: 0.87rem; }
+td { padding: 0.85rem 1rem; border-bottom: 1px solid var(--pale); font-size: 0.9rem; }
+tr:hover td { background: #EBF4FB; }
+tbody tr:last-child td { border-bottom: none; }
+
+/* ── STATUS BADGE ── */
+.status { display: inline-block; padding: 0.2rem 0.75rem; border-radius: 20px; font-size: 0.82rem; font-weight: 700; margin-bottom: 0.8rem; }
+.status.overweight  { background: #C8EDD4; color: #145C28; }
+.status.underweight { background: #FAD7D7; color: #8B0000; }
+
+/* ── PRIVATE CAPITAL ── */
+.pc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 1rem; margin: 1.2rem 0; }
+.pc-box { background: var(--pale); border: 1.5px solid var(--border); border-radius: 6px; padding: 1.2rem; }
+.pc-box h5 { color: var(--navy); font-size: 0.84rem; font-weight: 700; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.5px; }
+.pc-box p  { font-size: 0.87rem; line-height: 1.6; margin: 0; }
+.etag { display: inline-block; background: var(--navy); color: #fff; font-size: 0.74rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 20px; margin: 0.15rem 0.15rem 0 0; }
+.etag.qp { background: var(--exec); }
+.pc-disc { font-size: 0.74rem; color: #8AACBE; font-style: italic; margin-top: 0.8rem; padding-top: 0.6rem; border-top: 1px solid var(--pale); }
+
+/* ── HOLDING CARDS ── */
+.holding-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 1.3rem; margin: 1.2rem 0; }
+.hcard {
+  background: var(--card);
+  border: 2px solid var(--exec);
+  border-radius: 10px;
+  padding: 1.25rem;
+  display: flex; flex-direction: column; gap: 0.75rem;
+  box-shadow: 0 2px 8px rgba(22,63,95,0.1);
+  transition: box-shadow 0.2s;
+}
+.hcard:hover { box-shadow: 0 6px 18px rgba(22,63,95,0.2); }
+.hcard-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap; }
+.hcard-logo-name { display: flex; align-items: center; gap: 0.65rem; }
+.hcard-logo { width: 32px; height: 32px; border-radius: 4px; object-fit: contain; background: var(--pale); border: 1px solid var(--border); flex-shrink: 0; }
+.hcard-logo-fb { width: 32px; height: 32px; border-radius: 4px; background: var(--navy); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 0.62rem; font-weight: 800; flex-shrink: 0; }
+.hcard-name { font-size: 0.91rem; font-weight: 700; color: var(--navy); line-height: 1.3; }
+.htype { font-size: 0.69rem; font-weight: 700; letter-spacing: 0.5px; padding: 0.2rem 0.6rem; border-radius: 20px; white-space: nowrap; flex-shrink: 0; align-self: flex-start; }
+.ht-credit  { background: #D4EDD8; color: #145C28; }
+.ht-equity  { background: #D8E6F0; color: #163F5F; }
+.ht-hedged  { background: #F0E8D8; color: #7A3B10; }
+.hcard-link { font-size: 0.79rem; font-weight: 600; color: var(--exec); text-decoration: none; border-bottom: 1.5px solid var(--light); padding-bottom: 0.1rem; align-self: flex-start; transition: color 0.15s; }
+.hcard-link:hover { color: var(--navy); border-color: var(--navy); }
+.hcard-stats { display: grid; grid-template-columns: repeat(2,1fr); gap: 0.5rem; background: var(--pale); border-radius: 6px; padding: 0.75rem; }
+.hs { display: flex; flex-direction: column; gap: 0.1rem; }
+.hs-val { font-size: 0.96rem; font-weight: 800; color: var(--navy); line-height: 1.2; }
+.hs-lbl { font-size: 0.67rem; color: #5A7A8F; line-height: 1.3; }
+.hcard-bullets { margin: 0; padding-left: 1.1rem; display: flex; flex-direction: column; gap: 0.45rem; }
+.hcard-bullets li { font-size: 0.85rem; line-height: 1.55; }
+
+/* ── NM WEEKLY COMMENTARY CARD ── */
+.wmc-card {
+  display: flex;
+  gap: 0;
+  background: var(--navy);
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px solid var(--exec);
+  box-shadow: 0 4px 16px rgba(22,63,95,0.2);
+}
+.wmc-card-img-wrap { width: 280px; flex-shrink: 0; }
+.wmc-card-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.wmc-card-content {
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  justify-content: center;
+}
+.wmc-card-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--light);
+}
+.wmc-card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.3;
+}
+.wmc-card-summary p {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.7;
+  margin-bottom: 0.6rem;
+}
+.wmc-card-summary p:last-child { margin-bottom: 0; }
+.wmc-card-link {
+  display: inline-block;
+  margin-top: 0.4rem;
+  background: var(--exec);
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.5rem 1.2rem;
+  border-radius: 20px;
+  align-self: flex-start;
+  transition: background 0.2s;
+}
+.wmc-card-link:hover { background: var(--light); color: var(--navy); }
+@media(max-width:700px) {
+  .wmc-card { flex-direction: column; }
+  .wmc-card-img-wrap { width: 100%; height: 200px; }
+}
+.wmc-disc  { font-size: 0.74rem; color: #8AACBE; font-style: italic; margin-top: 0.7rem; }
+
+/* ── MODEL GRID ── */
+.model-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px,1fr)); gap: 1.1rem; margin-top: 1rem; }
+.model-card {
+  background: var(--card);
+  border: 2px solid var(--navy); border-radius: 8px;
+  padding: 1.2rem; text-align: center; cursor: pointer;
+  transition: all 0.2s; box-shadow: 0 2px 6px rgba(22,63,95,0.1);
+}
+.model-card:hover { background: var(--light); transform: scale(1.04); box-shadow: 0 6px 16px rgba(22,63,95,0.2); }
+.model-card h4 { color: var(--navy); margin-bottom: 0.4rem; font-size: 0.98rem; font-weight: 700; }
+.model-type { color: var(--exec); font-size: 0.8rem; font-weight: 500; margin-bottom: 0.8rem; }
+.alloc-bar { display: flex; height: 24px; border-radius: 4px; overflow: hidden; margin-bottom: 0.5rem; }
+.alloc-eq { background: var(--navy); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 0.75rem; font-weight: 700; }
+.alloc-fi { background: var(--exec); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 0.75rem; font-weight: 700; }
+.link-icon { display: inline-block; margin-top: 0.4rem; color: var(--exec); font-weight: 600; font-size: 0.84rem; }
+
+/* ── SUBSECTION ── */
+.subsec { margin-top: 2rem; padding: 1.4rem; background: var(--pale); border-left: 5px solid var(--exec); border-radius: 4px; }
+.subsec h4 { color: var(--navy); font-size: 1.1rem; font-weight: 700; margin-bottom: 0.8rem; }
+
+/* ── TILTS ── */
+#tiltsImg { width: 100%; height: auto; border-radius: 6px; display: block; }
+
+/* ── FOOTER ── */
+footer { background: var(--navy); color: #fff; text-align: center; padding: 1.8rem 2rem; margin-top: 0; border-top: 4px solid var(--exec); }
+footer p { margin: 0.35rem 0; font-size: 0.84rem; opacity: 0.82; }
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px) {
+  .site-header { padding: 1.2rem 1rem; flex-direction: column; gap: 0.7rem; text-align: center; }
+  .hdr-brand h1 { font-size: 1.3rem; }
+  .main-nav > ul > li > button.nav-btn { padding: 0.65rem 0.7rem; font-size: 0.73rem; }
+  .container { padding: 1.5rem 1rem; }
+  .stats-row { grid-template-columns: repeat(2,1fr); }
+  .wmc-banner { flex-direction: column; }
+  .wmc-img, .wmc-img-fb { width: 100%; height: 180px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header class="site-header">
+  <div class="hdr-brand">
+    <h1>LIVEWELL CAPITAL</h1>
+    <p>Wealth Management Department · Monthly Insights</p>
+  </div>
+  <div class="hdr-date">April 2026</div>
+</header>
+
+<nav class="main-nav">
+  <ul>
+    <li><a class="nav-btn" href="#sec-home">Market Overview</a></li>
+    <li><a class="nav-btn" href="#sec-market">Market Analysis</a></li>
+    <li><a class="nav-btn" href="#sec-asset">Asset Classes</a></li>
+    <li><a class="nav-btn" href="#sec-private">Private Capital</a></li>
+    <li><a class="nav-btn" href="#sec-models">Model Portfolios</a></li>
+    <li><a class="nav-btn" href="#sec-resources">Resources</a></li>
+  </ul>
+</nav>
+
+
+<!-- ════════════════════════════════════════════ -->
+<!--  PAGE: HOME                                  -->
+<!-- ════════════════════════════════════════════ -->
+<div id="sec-home" class="container">
+
+  <!-- WMC BANNER -->
+  
+
+
+<!-- ════════════════════════════════════════════ -->
+<!--  PAGE: MARKET ANALYSIS                       -->
+<!-- ════════════════════════════════════════════ -->
+<div id="sec-market" class="container" style="border-top:4px solid var(--navy);margin-top:2rem;padding-top:2rem;">
+
+  <div class="sb" id="sec-snapshot">
+    <div class="sb-head"><h2>March Monthly Market Snapshot</h2></div>
+    <div class="sb-body">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:1.2rem;">
+        <div class="card"><h4>⚔️ U.S.-Iran War Sends Oil Above $110</h4><p>U.S. and Israeli strikes on Iranian military and nuclear installations triggered the sharpest oil price surge in years, with Brent crude briefly topping $110 per barrel. Strait of Hormuz closure fears rattled global markets and pushed traders to price in a greater than 50% chance of a Fed rate <em>increase</em> by year-end — a dramatic reversal from earlier cut expectations.</p></div>
+        <div class="card"><h4>📉 New Tariffs After Supreme Court Ruling</h4><p>The Supreme Court struck down President Trump's emergency IEEPA tariffs as exceeding executive authority — but relief was short-lived. Trump immediately announced a new 15% global tariff under Section 122, keeping trade policy in flux. The S&P 500 fell 5.1% in March — its worst month since 2022 — and the Dow snapped a 10-month winning streak, dropping 5.4%.</p></div>
+        <div class="card"><h4>📊 Consumer Confidence Slides, Fed Stuck</h4><p>The University of Michigan Consumer Sentiment Index fell to 53.3 in March — down 5.8% from February — as inflation expectations climbed on energy and tariff pressures. Core PCE remains stuck at 3.1%, well above the 2% Fed target. Rate cuts priced in earlier in the year have been pushed out indefinitely as the Fed navigates slowing growth alongside renewed inflation risk.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sb" id="sec-summary">
+    <div class="sb-head"><h2>March Market Performance Summary</h2></div>
+    <div class="sb-body">
+      <div class="stats-row">
+        <div class="stat-box"><div class="num">-4.57%</div><div class="lbl">Dow Jones MTD</div></div>
+        <div class="stat-box"><div class="num">-4.04%</div><div class="lbl">S&amp;P 500 MTD</div></div>
+        <div class="stat-box"><div class="num">-3.14%</div><div class="lbl">Nasdaq MTD</div></div>
+        <div class="stat-box"><div class="num">3.50–3.75%</div><div class="lbl">Fed Benchmark Rate</div></div>
+      </div>
+      <div class="chart-wrap">
+        <div class="chart-title">March 2026 Market Performance — Major Indices</div>
+        <div class="chart-subtitle">Month-to-date % change | Source: YCharts, April 1, 2026</div>
+        <div id="chartMarket2"><div style="background:#fff;border-radius:8px;padding:1rem;overflow-x:auto;"><svg viewBox="0 0 700 220" style="width:100%;max-height:240px;" xmlns="http://www.w3.org/2000/svg"><line x1="52" y1="192.0" x2="676" y2="192.0" stroke="#EBF4FB" stroke-width="1"/><text x="48" y="196.0" text-anchor="end" font-size="10" fill="#5A7A8F">-6.0%</text><line x1="52" y1="147.0" x2="676" y2="147.0" stroke="#EBF4FB" stroke-width="1"/><text x="48" y="151.0" text-anchor="end" font-size="10" fill="#5A7A8F">-4.1%</text><line x1="52" y1="102.0" x2="676" y2="102.0" stroke="#EBF4FB" stroke-width="1"/><text x="48" y="106.0" text-anchor="end" font-size="10" fill="#5A7A8F">-2.2%</text><line x1="52" y1="57.0" x2="676" y2="57.0" stroke="#EBF4FB" stroke-width="1"/><text x="48" y="61.0" text-anchor="end" font-size="10" fill="#5A7A8F">-0.4%</text><line x1="52" y1="12.0" x2="676" y2="12.0" stroke="#EBF4FB" stroke-width="1"/><text x="48" y="16.0" text-anchor="end" font-size="10" fill="#5A7A8F">+1.5%</text><text x="52.0" y="216" text-anchor="middle" font-size="10" fill="#5A7A8F">Mar 1</text><text x="165.5" y="216" text-anchor="middle" font-size="10" fill="#5A7A8F">Mar 6</text><text x="278.9" y="216" text-anchor="middle" font-size="10" fill="#5A7A8F">Mar 11</text><text x="392.4" y="216" text-anchor="middle" font-size="10" fill="#5A7A8F">Mar 17</text><text x="505.8" y="216" text-anchor="middle" font-size="10" fill="#5A7A8F">Mar 21</text><text x="619.3" y="216" text-anchor="middle" font-size="10" fill="#5A7A8F">Mar 27</text><text x="676.0" y="216" text-anchor="middle" font-size="10" fill="#5A7A8F">Mar 31</text><path d="M 52.0 48.0 L 52.0 48.0 L 108.7 60.0 L 165.5 76.8 L 222.2 91.2 L 278.9 105.6 L 335.6 96.0 L 392.4 115.2 L 449.1 124.8 L 505.8 110.4 L 562.5 129.6 L 619.3 136.8 L 676.0 145.0 L 676.0 48.0 Z" fill="#163F5F22"/><path d="M 52.0 48.0 L 108.7 60.0 L 165.5 76.8 L 222.2 91.2 L 278.9 105.6 L 335.6 96.0 L 392.4 115.2 L 449.1 124.8 L 505.8 110.4 L 562.5 129.6 L 619.3 136.8 L 676.0 145.0" fill="none" stroke="#163F5F" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="676.0" cy="145.0" r="4" fill="white" stroke="#163F5F" stroke-width="2"/><text x="626.0" y="149.0" font-size="10" font-weight="bold" fill="#163F5F">-4.04%</text><path d="M 52.0 48.0 L 52.0 48.0 L 108.7 57.6 L 165.5 72.0 L 222.2 86.4 L 278.9 100.8 L 335.6 91.2 L 392.4 110.4 L 449.1 124.8 L 505.8 115.2 L 562.5 134.4 L 619.3 146.4 L 676.0 157.7 L 676.0 48.0 Z" fill="#2F6FA322"/><path d="M 52.0 48.0 L 108.7 57.6 L 165.5 72.0 L 222.2 86.4 L 278.9 100.8 L 335.6 91.2 L 392.4 110.4 L 449.1 124.8 L 505.8 115.2 L 562.5 134.4 L 619.3 146.4 L 676.0 157.7" fill="none" stroke="#2F6FA3" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="676.0" cy="157.7" r="4" fill="white" stroke="#2F6FA3" stroke-width="2"/><text x="626.0" y="161.7" font-size="10" font-weight="bold" fill="#2F6FA3">-4.57%</text><path d="M 52.0 48.0 L 52.0 48.0 L 108.7 52.8 L 165.5 62.4 L 222.2 72.0 L 278.9 81.6 L 335.6 72.0 L 392.4 86.4 L 449.1 96.0 L 505.8 86.4 L 562.5 105.6 L 619.3 115.2 L 676.0 123.4 L 676.0 48.0 Z" fill="#A9C8E322"/><path d="M 52.0 48.0 L 108.7 52.8 L 165.5 62.4 L 222.2 72.0 L 278.9 81.6 L 335.6 72.0 L 392.4 86.4 L 449.1 96.0 L 505.8 86.4 L 562.5 105.6 L 619.3 115.2 L 676.0 123.4" fill="none" stroke="#A9C8E3" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="676.0" cy="123.4" r="4" fill="white" stroke="#A9C8E3" stroke-width="2"/><text x="626.0" y="127.4" font-size="10" font-weight="bold" fill="#A9C8E3">-3.14%</text></svg><div style="display:flex;gap:1.5rem;justify-content:center;margin-top:0.5rem;flex-wrap:wrap;"><span style="display:flex;align-items:center;gap:0.4rem;font-size:0.82rem;font-weight:600;"><span style="display:inline-block;width:13px;height:13px;border-radius:2px;background:#163F5F;"></span>S&P 500</span><span style="display:flex;align-items:center;gap:0.4rem;font-size:0.82rem;font-weight:600;"><span style="display:inline-block;width:13px;height:13px;border-radius:2px;background:#2F6FA3;"></span>Dow Jones</span><span style="display:flex;align-items:center;gap:0.4rem;font-size:0.82rem;font-weight:600;"><span style="display:inline-block;width:13px;height:13px;border-radius:2px;background:#A9C8E3;"></span>Nasdaq</span></div></div></div></div>
+      <div class="info-box"><h4>Federal Reserve Update</h4><p>The Fed held rates steady at 3.50%–3.75% as sticky inflation complicated the path to cuts. Kevin Warsh remains on track to replace Jerome Powell as Fed Chair in May.</p></div>
+      <div class="warn-box"><h4>⚠ Tariff &amp; Trade Policy Uncertainty</h4><p>The Supreme Court struck down emergency universal tariffs as exceeding executive authority. President Trump's State of the Union reaffirmed commitment to tariffs, setting up continued volatility.</p></div>
+    </div>
+  </div>
+
+  <div class="sb" id="sec-sectors">
+    <div class="sb-head"><h2>Sector &amp; Asset Class Highlights</h2></div>
+    <div class="sb-body">
+      <div class="card-grid">
+        <div class="card"><h4>Value Holds Ground vs. Growth</h4><p>Value continued to significantly outperform growth through March. Russell 1000 Value finished at +2.10% YTD while Russell 1000 Growth fell -9.78% YTD — a divergence of nearly 12 percentage points driven by the tech selloff and rotation into defensive sectors.</p></div>
+        <div class="card"><h4>Energy Surges on Oil Spike</h4><p>Crude oil spiked to $119.50/barrel following Middle East conflict escalation before retreating to the mid-$90s. Energy stocks were among the few bright spots in March, with the sector posting strong gains while most other areas of the market declined sharply.</p></div>
+        <div class="card"><h4>Tariff Impact Accelerating</h4><p>Broad tariff escalation weighed heavily on consumer discretionary, industrials, and technology throughout March. Corporate margin concerns and supply chain disruption fears drove the equity selloff, with the S&P 500 posting its worst monthly decline of 2026.</p></div>
+        <div class="card"><h4>International Reverses Course</h4><p><strong>MSCI Emerging Markets:</strong> −0.51% YTD<br><strong>MSCI Europe:</strong> −3.36% YTD<br><strong>MSCI USA:</strong> −4.80% YTD<br>Earlier YTD gains were erased in March as global growth fears spread.</p></div>
+      </div>
+      <div class="chart-wrap" style="margin-top:1.5rem;">
+        <div class="chart-title">Value vs. Growth YTD — Russell 1000</div>
+        <div class="chart-subtitle">Year-to-date total return % | Source: YCharts, April 1, 2026</div>
+        <div id="chartSector"><div style="background:#fff;border-radius:8px;padding:1rem;overflow-x:auto;"><svg viewBox="0 0 700 220" style="width:100%;max-height:240px;" xmlns="http://www.w3.org/2000/svg"><line x1="52" y1="192.0" x2="676" y2="192.0" stroke="#EBF4FB" stroke-width="1"/><text x="48" y="196.0" text-anchor="end" font-size="10" fill="#5A7A8F">-12.0%</text><line x1="52" y1="147.0" x2="676" y2="147.0" stroke="#EBF4FB" stroke-width="1"/><text x="48" y="151.0" text-anchor="end" font-size="10" fill="#5A7A8F">-7.0%</text><line x1="52" y1="102.0" x2="676" y2="102.0" stroke="#EBF4FB" stroke-width="1"/><text x="48" y="106.0" text-anchor="end" font-size="10" fill="#5A7A8F">-2.0%</text><line x1="52" y1="57.0" x2="676" y2="57.0" stroke="#EBF4FB" stroke-width="1"/><text x="48" y="61.0" text-anchor="end" font-size="10" fill="#5A7A8F">+3.0%</text><line x1="52" y1="12.0" x2="676" y2="12.0" stroke="#EBF4FB" stroke-width="1"/><text x="48" y="16.0" text-anchor="end" font-size="10" fill="#5A7A8F">+8.0%</text><text x="52.0" y="216" text-anchor="middle" font-size="10" fill="#5A7A8F">Jan 2</text><text x="156.0" y="216" text-anchor="middle" font-size="10" fill="#5A7A8F">Jan 15</text><text x="260.0" y="216" text-anchor="middle" font-size="10" fill="#5A7A8F">Feb 1</text><text x="364.0" y="216" text-anchor="middle" font-size="10" fill="#5A7A8F">Feb 15</text><text x="468.0" y="216" text-anchor="middle" font-size="10" fill="#5A7A8F">Mar 1</text><text x="572.0" y="216" text-anchor="middle" font-size="10" fill="#5A7A8F">Mar 15</text><text x="676.0" y="216" text-anchor="middle" font-size="10" fill="#5A7A8F">Mar 31</text><path d="M 52.0 84.0 L 52.0 84.0 L 156.0 52.5 L 260.0 37.2 L 364.0 30.0 L 468.0 35.4 L 572.0 46.2 L 676.0 65.1 L 676.0 84.0 Z" fill="#163F5F22"/><path d="M 52.0 84.0 L 156.0 52.5 L 260.0 37.2 L 364.0 30.0 L 468.0 35.4 L 572.0 46.2 L 676.0 65.1" fill="none" stroke="#163F5F" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="676.0" cy="65.1" r="4" fill="white" stroke="#163F5F" stroke-width="2"/><text x="626.0" y="69.1" font-size="10" font-weight="bold" fill="#163F5F">+2.10%</text><path d="M 52.0 84.0 L 52.0 84.0 L 156.0 94.8 L 260.0 118.2 L 364.0 120.0 L 468.0 130.8 L 572.0 150.6 L 676.0 172.0 L 676.0 84.0 Z" fill="#2F6FA322"/><path d="M 52.0 84.0 L 156.0 94.8 L 260.0 118.2 L 364.0 120.0 L 468.0 130.8 L 572.0 150.6 L 676.0 172.0" fill="none" stroke="#2F6FA3" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="676.0" cy="172.0" r="4" fill="white" stroke="#2F6FA3" stroke-width="2"/><text x="626.0" y="176.0" font-size="10" font-weight="bold" fill="#2F6FA3">-9.78%</text></svg><div style="display:flex;gap:1.5rem;justify-content:center;margin-top:0.5rem;flex-wrap:wrap;"><span style="display:flex;align-items:center;gap:0.4rem;font-size:0.82rem;font-weight:600;"><span style="display:inline-block;width:13px;height:13px;border-radius:2px;background:#163F5F;"></span>R1000 Value</span><span style="display:flex;align-items:center;gap:0.4rem;font-size:0.82rem;font-weight:600;"><span style="display:inline-block;width:13px;height:13px;border-radius:2px;background:#2F6FA3;"></span>R1000 Growth</span></div></div></div></div>
+      <div class="chart-wrap">
+        <div class="chart-title">International Market Performance YTD</div>
+        <div class="chart-subtitle">Year-to-date % change | Source: YCharts, April 1, 2026</div>
+        <div id="chartIntl"><div style="background:#fff;border-radius:8px;padding:1rem;overflow-x:auto;"><svg viewBox="0 0 700 220" style="width:100%;max-height:240px;" xmlns="http://www.w3.org/2000/svg"><line x1="52" y1="192.0" x2="676" y2="192.0" stroke="#EBF4FB" stroke-width="1"/><text x="48" y="196.0" text-anchor="end" font-size="10" fill="#5A7A8F">-7.0%</text><line x1="52" y1="147.0" x2="676" y2="147.0" stroke="#EBF4FB" stroke-width="1"/><text x="48" y="151.0" text-anchor="end" font-size="10" fill="#5A7A8F">-2.2%</text><line x1="52" y1="102.0" x2="676" y2="102.0" stroke="#EBF4FB" stroke-width="1"/><text x="48" y="106.0" text-anchor="end" font-size="10" fill="#5A7A8F">+2.5%</text><line x1="52" y1="57.0" x2="676" y2="57.0" stroke="#EBF4FB" stroke-width="1"/><text x="48" y="61.0" text-anchor="end" font-size="10" fill="#5A7A8F">+7.2%</text><line x1="52" y1="12.0" x2="676" y2="12.0" stroke="#EBF4FB" stroke-width="1"/><text x="48" y="16.0" text-anchor="end" font-size="10" fill="#5A7A8F">+12.0%</text><text x="52.0" y="216" text-anchor="middle" font-size="10" fill="#5A7A8F">Jan 2</text><text x="156.0" y="216" text-anchor="middle" font-size="10" fill="#5A7A8F">Jan 15</text><text x="260.0" y="216" text-anchor="middle" font-size="10" fill="#5A7A8F">Feb 1</text><text x="364.0" y="216" text-anchor="middle" font-size="10" fill="#5A7A8F">Feb 15</text><text x="468.0" y="216" text-anchor="middle" font-size="10" fill="#5A7A8F">Mar 1</text><text x="572.0" y="216" text-anchor="middle" font-size="10" fill="#5A7A8F">Mar 15</text><text x="676.0" y="216" text-anchor="middle" font-size="10" fill="#5A7A8F">Mar 31</text><path d="M 52.0 125.7 L 52.0 125.7 L 156.0 85.9 L 260.0 59.4 L 364.0 36.6 L 468.0 61.3 L 572.0 95.4 L 676.0 130.5 L 676.0 125.7 Z" fill="#163F5F22"/><path d="M 52.0 125.7 L 156.0 85.9 L 260.0 59.4 L 364.0 36.6 L 468.0 61.3 L 572.0 95.4 L 676.0 130.5" fill="none" stroke="#163F5F" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="676.0" cy="130.5" r="4" fill="white" stroke="#163F5F" stroke-width="2"/><text x="626.0" y="134.5" font-size="10" font-weight="bold" fill="#163F5F">-0.51%</text><path d="M 52.0 125.7 L 52.0 125.7 L 156.0 102.9 L 260.0 82.1 L 364.0 66.9 L 468.0 78.3 L 572.0 102.9 L 676.0 157.5 L 676.0 125.7 Z" fill="#2F6FA322"/><path d="M 52.0 125.7 L 156.0 102.9 L 260.0 82.1 L 364.0 66.9 L 468.0 78.3 L 572.0 102.9 L 676.0 157.5" fill="none" stroke="#2F6FA3" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="676.0" cy="157.5" r="4" fill="white" stroke="#2F6FA3" stroke-width="2"/><text x="626.0" y="161.5" font-size="10" font-weight="bold" fill="#2F6FA3">-3.36%</text><path d="M 52.0 125.7 L 52.0 125.7 L 156.0 116.2 L 260.0 121.9 L 364.0 120.0 L 468.0 133.3 L 572.0 148.4 L 676.0 171.2 L 676.0 125.7 Z" fill="#A9C8E322"/><path d="M 52.0 125.7 L 156.0 116.2 L 260.0 121.9 L 364.0 120.0 L 468.0 133.3 L 572.0 148.4 L 676.0 171.2" fill="none" stroke="#A9C8E3" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="676.0" cy="171.2" r="4" fill="white" stroke="#A9C8E3" stroke-width="2"/><text x="626.0" y="175.2" font-size="10" font-weight="bold" fill="#A9C8E3">-4.80%</text></svg><div style="display:flex;gap:1.5rem;justify-content:center;margin-top:0.5rem;flex-wrap:wrap;"><span style="display:flex;align-items:center;gap:0.4rem;font-size:0.82rem;font-weight:600;"><span style="display:inline-block;width:13px;height:13px;border-radius:2px;background:#163F5F;"></span>MSCI EM</span><span style="display:flex;align-items:center;gap:0.4rem;font-size:0.82rem;font-weight:600;"><span style="display:inline-block;width:13px;height:13px;border-radius:2px;background:#2F6FA3;"></span>MSCI Europe</span><span style="display:flex;align-items:center;gap:0.4rem;font-size:0.82rem;font-weight:600;"><span style="display:inline-block;width:13px;height:13px;border-radius:2px;background:#A9C8E3;"></span>MSCI USA</span></div></div></div></div>
+    </div>
+  </div>
+
+  <div class="sb" id="sec-tilts">
+    <div class="sb-head"><h2>Current Tilts by Asset Class</h2></div>
+    <div class="sb-body">
+      <div class="chart-wrap"><div class="chart-title">Current Asset Class Positioning</div><div style="background:#fff;border-radius:8px;padding:1.2rem;border:1.5px solid var(--border);">
+  <table style="width:100%;font-size:0.88rem;margin:0;">
+    <thead>
+      <tr style="background:var(--navy);color:#fff;">
+        <th style="padding:0.6rem 0.8rem;text-align:left;">Asset Class</th>
+        <th style="padding:0.6rem 0.8rem;text-align:center;">Tilt</th>
+        <th style="padding:0.6rem 0.8rem;text-align:left;">Rationale</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:0.55rem 0.8rem;border-bottom:1px solid var(--pale);font-weight:600;">U.S. Equities</td><td style="padding:0.55rem 0.8rem;border-bottom:1px solid var(--pale);text-align:center;"><span style="background:#FAD7D7;color:#8B0000;padding:0.15rem 0.6rem;border-radius:12px;font-size:0.8rem;font-weight:700;">Slightly Under</span></td><td style="padding:0.55rem 0.8rem;border-bottom:1px solid var(--pale);">Elevated valuations; favor equal-weight over cap-weight</td></tr>
+      <tr><td style="padding:0.55rem 0.8rem;border-bottom:1px solid var(--pale);font-weight:600;">U.S. Small/Mid Cap</td><td style="padding:0.55rem 0.8rem;border-bottom:1px solid var(--pale);text-align:center;"><span style="background:#C8EDD4;color:#145C28;padding:0.15rem 0.6rem;border-radius:12px;font-size:0.8rem;font-weight:700;">Overweight</span></td><td style="padding:0.55rem 0.8rem;border-bottom:1px solid var(--pale);">Attractive relative valuations; improving earnings growth</td></tr>
+      <tr><td style="padding:0.55rem 0.8rem;border-bottom:1px solid var(--pale);font-weight:600;">International Equity</td><td style="padding:0.55rem 0.8rem;border-bottom:1px solid var(--pale);text-align:center;"><span style="background:#C8EDD4;color:#145C28;padding:0.15rem 0.6rem;border-radius:12px;font-size:0.8rem;font-weight:700;">Overweight</span></td><td style="padding:0.55rem 0.8rem;border-bottom:1px solid var(--pale);">Cheaper valuations; dollar weakness tailwind</td></tr>
+      <tr><td style="padding:0.55rem 0.8rem;border-bottom:1px solid var(--pale);font-weight:600;">Fixed Income</td><td style="padding:0.55rem 0.8rem;border-bottom:1px solid var(--pale);text-align:center;"><span style="background:#C8EDD4;color:#145C28;padding:0.15rem 0.6rem;border-radius:12px;font-size:0.8rem;font-weight:700;">Overweight</span></td><td style="padding:0.55rem 0.8rem;border-bottom:1px solid var(--pale);">Improved real yields; renewed diversification benefits</td></tr>
+      <tr><td style="padding:0.55rem 0.8rem;border-bottom:1px solid var(--pale);font-weight:600;">Real Assets</td><td style="padding:0.55rem 0.8rem;border-bottom:1px solid var(--pale);text-align:center;"><span style="background:#FAD7D7;color:#8B0000;padding:0.15rem 0.6rem;border-radius:12px;font-size:0.8rem;font-weight:700;">Underweight</span></td><td style="padding:0.55rem 0.8rem;border-bottom:1px solid var(--pale);">Fixed income offers better inflation-adjusted returns</td></tr>
+      <tr><td style="padding:0.55rem 0.8rem;font-weight:600;">Private Capital</td><td style="padding:0.55rem 0.8rem;text-align:center;"><span style="background:#D8E6F0;color:#163F5F;padding:0.15rem 0.6rem;border-radius:12px;font-size:0.8rem;font-weight:700;">Neutral/Over</span></td><td style="padding:0.55rem 0.8rem;">Illiquidity premium; return enhancer for eligible clients</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:0.74rem;color:#8AACBE;font-style:italic;margin-top:0.6rem;">Source: LiveWell Capital Investment Committee. Updated monthly.</p>
+</div></div>
+      <h3>Correction &amp; Bear Market Indicators</h3>
+      <table>
+        <thead><tr><th>Metric</th><th>Level</th><th>Date</th></tr></thead>
+        <tbody>
+          <tr><td><strong>S&P 500 Highwater Close</strong></td><td>7,002</td><td>1/28/2026</td></tr>
+          <tr><td><strong>−10% (Correction)</strong></td><td>6,302</td><td>Threshold</td></tr>
+          <tr><td><strong>−20% (Bear Market)</strong></td><td>5,602</td><td>Threshold</td></tr>
+          <tr><td><strong>3/31/2026 Close</strong></td><td>6,529</td><td>3/31/2026</td></tr>
+          <tr><td><strong>Distance from Highwater</strong></td><td>−6.75%</td><td>In correction territory</td></tr>
+        </tbody>
+      </table>
+      <div class="warn-box" style="margin-top:1.2rem;"><h4>Market Context — 3/31/2026</h4><p>The S&P 500 closed at 6,529 on March 31, 2026 — down 6.75% from its all-time high close of 7,002 on January 28, 2026. This places the index past the correction threshold of 6,302 (−10%) during the month, though it bounced back above that level on the final day of March. The bear market threshold of 5,602 (−20%) remains well below current levels.</p></div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+
+<!-- ════════════════════════════════════════════ -->
+<!--  PAGE: ASSET CLASSES                         -->
+<!-- ════════════════════════════════════════════ -->
+<div id="sec-asset" class="container" style="border-top:4px solid var(--navy);margin-top:2rem;padding-top:2rem;">
+
+  <div class="sb" id="sec-equities">
+    <div class="sb-head"><h2>Equities</h2></div>
+    <div class="sb-body">
+      <span class="status underweight">Slightly Underweight</span>
+      <h3>Market Overview</h3>
+      <p>The U.S. economy continued to advance in 2025 despite the labor market providing a contrasting signal of growing weakness. Equity markets remained resilient and pushed markedly higher with Large-Cap stocks posting their third straight year of 15+% returns.</p>
+      <h3>Market Dynamics</h3>
+      <p>Over the past few years, both the economy and markets have narrowed driven by the bifurcated impact of the Fed's tightening cycle on individual consumers and businesses. The AI boom and K-shaped consumer have propelled growth for the economy and markets the last few years.</p>
+      <h3>Investment Strategy</h3>
+      <p>We continue to believe that the delicate balance in both the economy and markets will give way to a broader advance in the coming years. We remain focused on the intermediate to long-term while positioning for lower, but broader equity returns in 2026.</p>
+      <div class="info-box">
+        <h4>Current Positioning</h4>
+        <p><strong>Favor:</strong> U.S. Small-Caps and Mid-Caps reflecting improving earnings growth prospects and attractive relative valuations</p>
+        <p><strong>Tilt:</strong> Equal-weighted versus market cap-weighted S&P given concerns about valuations and concentration</p>
+        <p><strong>Underweight:</strong> Real Estate equity, which is sensitive to interest rates and pressured rent growth conditions</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sb" id="sec-fixed">
+    <div class="sb-head"><h2>Fixed Income</h2></div>
+    <div class="sb-body">
+      <span class="status overweight">Overweight</span>
+      <h3>Strategic Shift</h3>
+      <p>We were tactically underweight fixed income for much of the past seven years leading up to 2023 as the asset class offered little expected return over the anticipated rate of inflation. Our positioning moved to overweight in 2024 as the dramatic repricing vastly improved the real return potential and diversification benefits within our portfolios.</p>
+      <h3>2025 Performance Validation</h3>
+      <p>2025 performance was a testament to this improved risk/return relationship as the asset class posted a <strong>7+% return with just a 2.5% drawdown</strong> in the second quarter.</p>
+      <div class="info-box"><h4>Diversification Benefit</h4><p>When recession fears spiked in 2024 and 2025, bonds appeared to hedge equity downside, confirming their renewed role as portfolio ballast.</p></div>
+    </div>
+  </div>
+
+  <div class="sb" id="sec-real">
+    <div class="sb-head"><h2>Real Assets</h2></div>
+    <div class="sb-body">
+      <span class="status underweight">Underweight</span>
+      <h3>Strategic Role</h3>
+      <p>Real assets remain an important diversifier in portfolio construction, hedging against potential inflationary tail risk as we saw in 2022.</p>
+      <h3>Current Positioning Rationale</h3>
+      <p>We remain underweight preferring more economically sensitive asset class exposures along with elevated yields in fixed income that offers expected returns well above the market's expectation of future inflation.</p>
+      <div class="info-box"><h4>Portfolio Context</h4><p>While maintaining an underweight position, we recognize the importance of real assets as an inflation hedge and continue to monitor opportunities for tactical adjustments.</p></div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+
+<!-- ════════════════════════════════════════════ -->
+<!--  PAGE: PRIVATE CAPITAL                       -->
+<!-- ════════════════════════════════════════════ -->
+<div id="sec-private" class="container" style="border-top:4px solid var(--navy);margin-top:2rem;padding-top:2rem;">
+
+  <div class="sb" id="sec-pe-overview">
+    <div class="sb-head"><h2>Private Equity — Asset Class Overview</h2></div>
+    <div class="sb-body">
+      <p>Private equity has historically delivered a meaningful return premium over public markets across full market cycles, driven by the illiquidity premium, operational value creation, and access to company growth at stages unavailable in public markets. The chart below reflects the <strong>Private Equity Index Total Return (^PEATR)</strong> — a broad market benchmark providing a transparent, market-level view of PE performance relative to public equities.</p>
+      <div class="pc-grid">
+        <div class="pc-box"><h5>📈 Rationale</h5><p>PE captures an illiquidity premium by investing in companies not subject to daily public market pricing, historically generating excess returns across full cycles. A multi-strategy approach spanning buyouts, growth equity, and secondaries reduces vintage-year concentration risk and smooths the J-curve.</p></div>
+        <div class="pc-box"><h5>🎯 Target Client</h5><p>Best suited for clients with long investment horizons and limited near-term liquidity requirements. Evergreen and interval fund structures have made PE more accessible — offering periodic subscriptions and tender offers rather than fully locked capital.</p><div style="margin-top:0.6rem;"><span class="etag">$2M+ Accredited Investor</span><span class="etag qp">$5M+ Qualified Purchaser</span></div></div>
+        <div class="pc-box"><h5>🏗️ Portfolio Fit</h5><p>PE is typically allocated as a return enhancer within the equity sleeve, targeting long-term capital appreciation beyond what public markets can offer. Manager selection is critical — dispersion between top- and bottom-quartile PE managers is significantly wider than in public equity markets.</p></div>
+      </div>
+      <div class="chart-wrap">
+        <div class="chart-title">Private Equity Annual Total Return (^PEATR) vs. S&amp;P 500</div>
+        <div class="chart-subtitle">Source: YCharts, through 2025. Past performance is not indicative of future results.</div>
+        <div id="chartPE"><div style="background:#fff;border-radius:8px;padding:1rem 1rem 0.5rem;"><div style="position:relative;height:260px;margin-left:48px;margin-right:4px;"><div style="position:absolute;bottom:0.0%;left:0;right:0;height:1px;background:#EBF4FB;z-index:1;"></div><div style="position:absolute;bottom:0.0%;left:-48px;transform:translateY(50%);font-size:10px;color:#5A7A8F;white-space:nowrap;">-40%</div><div style="position:absolute;bottom:20.0%;left:0;right:0;height:1px;background:#EBF4FB;z-index:1;"></div><div style="position:absolute;bottom:20.0%;left:-48px;transform:translateY(50%);font-size:10px;color:#5A7A8F;white-space:nowrap;">-21%</div><div style="position:absolute;bottom:40.0%;left:0;right:0;height:1px;background:#EBF4FB;z-index:1;"></div><div style="position:absolute;bottom:40.0%;left:-48px;transform:translateY(50%);font-size:10px;color:#5A7A8F;white-space:nowrap;">-2%</div><div style="position:absolute;bottom:60.0%;left:0;right:0;height:1px;background:#EBF4FB;z-index:1;"></div><div style="position:absolute;bottom:60.0%;left:-48px;transform:translateY(50%);font-size:10px;color:#5A7A8F;white-space:nowrap;">+17%</div><div style="position:absolute;bottom:80.0%;left:0;right:0;height:1px;background:#EBF4FB;z-index:1;"></div><div style="position:absolute;bottom:80.0%;left:-48px;transform:translateY(50%);font-size:10px;color:#5A7A8F;white-space:nowrap;">+36%</div><div style="position:absolute;bottom:100.0%;left:0;right:0;height:1px;background:#EBF4FB;z-index:1;"></div><div style="position:absolute;bottom:100.0%;left:-48px;transform:translateY(50%);font-size:10px;color:#5A7A8F;white-space:nowrap;">+55%</div><div style="position:absolute;bottom:42.11%;left:0.00%;width:6.04%;height:36.03%;background:#163F5F;border-radius:3px 3px 0 0;z-index:2;">
+                  <span style="font-size:9px;font-weight:700;color:#163F5F;position:absolute;top:-14px;left:50%;transform:translateX(-50%);white-space:nowrap;">+34.2%</span>
+                </div><div style="position:absolute;bottom:42.11%;left:6.54%;width:6.04%;height:33.16%;background:#2F6FA3;border-radius:3px 3px 0 0;z-index:2;">
+                  <span style="font-size:9px;font-weight:700;color:#2F6FA3;position:absolute;top:-14px;left:50%;transform:translateX(-50%);white-space:nowrap;">+31.5%</span>
+                </div><div style="position:absolute;bottom:42.11%;left:14.57%;width:6.04%;height:18.29%;background:#163F5F;border-radius:3px 3px 0 0;z-index:2;">
+                  <span style="font-size:9px;font-weight:700;color:#163F5F;position:absolute;top:-14px;left:50%;transform:translateX(-50%);white-space:nowrap;">+17.4%</span>
+                </div><div style="position:absolute;bottom:42.11%;left:21.11%;width:6.04%;height:19.37%;background:#2F6FA3;border-radius:3px 3px 0 0;z-index:2;">
+                  <span style="font-size:9px;font-weight:700;color:#2F6FA3;position:absolute;top:-14px;left:50%;transform:translateX(-50%);white-space:nowrap;">+18.4%</span>
+                </div><div style="position:absolute;bottom:42.11%;left:29.14%;width:6.04%;height:42.13%;background:#163F5F;border-radius:3px 3px 0 0;z-index:2;">
+                  <span style="font-size:9px;font-weight:700;color:#163F5F;position:absolute;top:-14px;left:50%;transform:translateX(-50%);white-space:nowrap;">+40.0%</span>
+                </div><div style="position:absolute;bottom:42.11%;left:35.68%;width:6.04%;height:30.21%;background:#2F6FA3;border-radius:3px 3px 0 0;z-index:2;">
+                  <span style="font-size:9px;font-weight:700;color:#2F6FA3;position:absolute;top:-14px;left:50%;transform:translateX(-50%);white-space:nowrap;">+28.7%</span>
+                </div><div style="position:absolute;top:57.89%;left:43.71%;width:6.04%;height:33.66%;background:#A9C8E3;border-radius:0 0 3px 3px;border:1.5px solid #163F5F;z-index:2;">
+                  <span style="font-size:9px;font-weight:700;color:#163F5F;position:absolute;bottom:-14px;left:50%;transform:translateX(-50%);white-space:nowrap;">-32.0%</span>
+                </div><div style="position:absolute;top:57.89%;left:50.25%;width:6.04%;height:19.05%;background:#D6E4EF;border-radius:0 0 3px 3px;border:1.5px solid #2F6FA3;z-index:2;">
+                  <span style="font-size:9px;font-weight:700;color:#2F6FA3;position:absolute;bottom:-14px;left:50%;transform:translateX(-50%);white-space:nowrap;">-18.1%</span>
+                </div><div style="position:absolute;bottom:42.11%;left:58.29%;width:6.04%;height:45.97%;background:#163F5F;border-radius:3px 3px 0 0;z-index:2;">
+                  <span style="font-size:9px;font-weight:700;color:#163F5F;position:absolute;top:-14px;left:50%;transform:translateX(-50%);white-space:nowrap;">+43.7%</span>
+                </div><div style="position:absolute;bottom:42.11%;left:64.82%;width:6.04%;height:27.68%;background:#2F6FA3;border-radius:3px 3px 0 0;z-index:2;">
+                  <span style="font-size:9px;font-weight:700;color:#2F6FA3;position:absolute;top:-14px;left:50%;transform:translateX(-50%);white-space:nowrap;">+26.3%</span>
+                </div><div style="position:absolute;bottom:42.11%;left:72.86%;width:6.04%;height:30.38%;background:#163F5F;border-radius:3px 3px 0 0;z-index:2;">
+                  <span style="font-size:9px;font-weight:700;color:#163F5F;position:absolute;top:-14px;left:50%;transform:translateX(-50%);white-space:nowrap;">+28.9%</span>
+                </div><div style="position:absolute;bottom:42.11%;left:79.39%;width:6.04%;height:26.32%;background:#2F6FA3;border-radius:3px 3px 0 0;z-index:2;">
+                  <span style="font-size:9px;font-weight:700;color:#2F6FA3;position:absolute;top:-14px;left:50%;transform:translateX(-50%);white-space:nowrap;">+25.0%</span>
+                </div><div style="position:absolute;bottom:42.11%;left:87.43%;width:6.04%;height:19.47%;background:#163F5F;border-radius:3px 3px 0 0;z-index:2;">
+                  <span style="font-size:9px;font-weight:700;color:#163F5F;position:absolute;top:-14px;left:50%;transform:translateX(-50%);white-space:nowrap;">+18.5%</span>
+                </div><div style="position:absolute;bottom:42.11%;left:93.96%;width:6.04%;height:26.32%;background:#2F6FA3;border-radius:3px 3px 0 0;z-index:2;">
+                  <span style="font-size:9px;font-weight:700;color:#2F6FA3;position:absolute;top:-14px;left:50%;transform:translateX(-50%);white-space:nowrap;">+25.0%</span>
+                </div></div><div style="display:flex;margin-left:48px;margin-right:4px;margin-top:18px;"><div style="position:absolute;" ></div><div style="position:absolute;" ></div><div style="position:absolute;" ></div><div style="position:absolute;" ></div><div style="position:absolute;" ></div><div style="position:absolute;" ></div><div style="position:absolute;" ></div></div><div style="display:flex;justify-content:space-around;margin-left:48px;margin-right:4px;margin-top:4px;"><div style="flex:1;text-align:center;font-size:11px;color:#5A7A8F;">2019</div><div style="flex:1;text-align:center;font-size:11px;color:#5A7A8F;">2020</div><div style="flex:1;text-align:center;font-size:11px;color:#5A7A8F;">2021</div><div style="flex:1;text-align:center;font-size:11px;color:#5A7A8F;">2022</div><div style="flex:1;text-align:center;font-size:11px;color:#5A7A8F;">2023</div><div style="flex:1;text-align:center;font-size:11px;color:#5A7A8F;">2024</div><div style="flex:1;text-align:center;font-size:11px;color:#5A7A8F;">2025</div></div><div style="display:flex;gap:1.5rem;justify-content:center;margin-top:0.8rem;flex-wrap:wrap;"><span style="display:flex;align-items:center;gap:0.4rem;font-size:0.82rem;font-weight:600;"><span style="display:inline-block;width:13px;height:13px;border-radius:2px;background:#163F5F;"></span>^PEATR (Private Equity)</span><span style="display:flex;align-items:center;gap:0.4rem;font-size:0.82rem;font-weight:600;"><span style="display:inline-block;width:13px;height:13px;border-radius:2px;background:#2F6FA3;"></span>S&P 500</span></div></div></div>
+      <p class="pc-disc">Private equity investments are available to eligible clients meeting Accredited Investor ($2M+ net worth) or Qualified Purchaser ($5M+ investable assets) thresholds. Past performance does not guarantee future results.</p>
+    </div>
+  </div>
+
+  <div class="sb" id="sec-pc-overview">
+    <div class="sb-head"><h2>Private Credit — Asset Class Overview</h2></div>
+    <div class="sb-body">
+      <p>Private credit — primarily direct lending — has emerged as one of the fastest-growing segments of the alternative investment landscape, offering floating-rate income, reduced correlation to public bond markets, and a yield premium driven by the complexity and illiquidity of non-bank lending. The <strong>VanEck BDC Income ETF (BIZD)</strong> tracks the MVIS U.S. Business Development Companies Index — the broadest, most liquid publicly available proxy for the direct lending market.</p>
+      <div class="pc-grid">
+        <div class="pc-box"><h5>📈 Rationale</h5><p>Private credit generates attractive income through floating-rate loans that naturally adjust upward as rates rise, providing an inherent hedge against rate risk that traditional fixed income lacks. Non-bank lenders fill a gap created by tightened bank lending standards post-2008.</p></div>
+        <div class="pc-box"><h5>🎯 Target Client</h5><p>Ideal for income-oriented clients seeking yield enhancement above traditional fixed income who are willing to accept reduced liquidity in exchange for a significant premium.</p><div style="margin-top:0.6rem;"><span class="etag">$2M+ Accredited Investor</span><span class="etag qp">$5M+ Qualified Purchaser</span></div></div>
+        <div class="pc-box"><h5>🏗️ Portfolio Fit</h5><p>Private credit fits within the fixed income or alternative income sleeve, serving as a yield enhancer relative to investment grade bonds. Senior-secured positioning and floating rate structures provide dual downside protection.</p></div>
+      </div>
+      <div class="chart-wrap">
+        <div class="chart-title">Private Credit Annual Total Return (BIZD) vs. Bloomberg U.S. Agg</div>
+        <div class="chart-subtitle">VanEck BDC Income ETF | Source: VanEck. Past performance is not indicative of future results.</div>
+        <div id="chartPC"><div style="background:#fff;border-radius:8px;padding:1rem 1rem 0.5rem;"><div style="position:relative;height:260px;margin-left:48px;margin-right:4px;"><div style="position:absolute;bottom:0.0%;left:0;right:0;height:1px;background:#EBF4FB;z-index:1;"></div><div style="position:absolute;bottom:0.0%;left:-48px;transform:translateY(50%);font-size:10px;color:#5A7A8F;white-space:nowrap;">-20%</div><div style="position:absolute;bottom:20.0%;left:0;right:0;height:1px;background:#EBF4FB;z-index:1;"></div><div style="position:absolute;bottom:20.0%;left:-48px;transform:translateY(50%);font-size:10px;color:#5A7A8F;white-space:nowrap;">-6%</div><div style="position:absolute;bottom:40.0%;left:0;right:0;height:1px;background:#EBF4FB;z-index:1;"></div><div style="position:absolute;bottom:40.0%;left:-48px;transform:translateY(50%);font-size:10px;color:#5A7A8F;white-space:nowrap;">+8%</div><div style="position:absolute;bottom:60.0%;left:0;right:0;height:1px;background:#EBF4FB;z-index:1;"></div><div style="position:absolute;bottom:60.0%;left:-48px;transform:translateY(50%);font-size:10px;color:#5A7A8F;white-space:nowrap;">+22%</div><div style="position:absolute;bottom:80.0%;left:0;right:0;height:1px;background:#EBF4FB;z-index:1;"></div><div style="position:absolute;bottom:80.0%;left:-48px;transform:translateY(50%);font-size:10px;color:#5A7A8F;white-space:nowrap;">+36%</div><div style="position:absolute;bottom:100.0%;left:0;right:0;height:1px;background:#EBF4FB;z-index:1;"></div><div style="position:absolute;bottom:100.0%;left:-48px;transform:translateY(50%);font-size:10px;color:#5A7A8F;white-space:nowrap;">+50%</div><div style="position:absolute;bottom:28.57%;left:0.00%;width:6.04%;height:44.11%;background:#163F5F;border-radius:3px 3px 0 0;z-index:2;">
+                  <span style="font-size:9px;font-weight:700;color:#163F5F;position:absolute;top:-14px;left:50%;transform:translateX(-50%);white-space:nowrap;">+30.9%</span>
+                </div><div style="position:absolute;bottom:28.57%;left:6.54%;width:6.04%;height:12.43%;background:#2F6FA3;border-radius:3px 3px 0 0;z-index:2;">
+                  <span style="font-size:9px;font-weight:700;color:#2F6FA3;position:absolute;top:-14px;left:50%;transform:translateX(-50%);white-space:nowrap;">+8.7%</span>
+                </div><div style="position:absolute;top:71.43%;left:14.57%;width:6.04%;height:9.77%;background:#A9C8E3;border-radius:0 0 3px 3px;border:1.5px solid #163F5F;z-index:2;">
+                  <span style="font-size:9px;font-weight:700;color:#163F5F;position:absolute;bottom:-14px;left:50%;transform:translateX(-50%);white-space:nowrap;">-6.8%</span>
+                </div><div style="position:absolute;bottom:28.57%;left:21.11%;width:6.04%;height:10.71%;background:#2F6FA3;border-radius:3px 3px 0 0;z-index:2;">
+                  <span style="font-size:9px;font-weight:700;color:#2F6FA3;position:absolute;top:-14px;left:50%;transform:translateX(-50%);white-space:nowrap;">+7.5%</span>
+                </div><div style="position:absolute;bottom:28.57%;left:29.14%;width:6.04%;height:51.66%;background:#163F5F;border-radius:3px 3px 0 0;z-index:2;">
+                  <span style="font-size:9px;font-weight:700;color:#163F5F;position:absolute;top:-14px;left:50%;transform:translateX(-50%);white-space:nowrap;">+36.2%</span>
+                </div><div style="position:absolute;top:71.43%;left:35.68%;width:6.04%;height:2.14%;background:#D6E4EF;border-radius:0 0 3px 3px;border:1.5px solid #2F6FA3;z-index:2;">
+                  <span style="font-size:9px;font-weight:700;color:#2F6FA3;position:absolute;bottom:-14px;left:50%;transform:translateX(-50%);white-space:nowrap;">-1.5%</span>
+                </div><div style="position:absolute;top:71.43%;left:43.71%;width:6.04%;height:12.33%;background:#A9C8E3;border-radius:0 0 3px 3px;border:1.5px solid #163F5F;z-index:2;">
+                  <span style="font-size:9px;font-weight:700;color:#163F5F;position:absolute;bottom:-14px;left:50%;transform:translateX(-50%);white-space:nowrap;">-8.6%</span>
+                </div><div style="position:absolute;top:71.43%;left:50.25%;width:6.04%;height:18.57%;background:#D6E4EF;border-radius:0 0 3px 3px;border:1.5px solid #2F6FA3;z-index:2;">
+                  <span style="font-size:9px;font-weight:700;color:#2F6FA3;position:absolute;bottom:-14px;left:50%;transform:translateX(-50%);white-space:nowrap;">-13.0%</span>
+                </div><div style="position:absolute;bottom:28.57%;left:58.29%;width:6.04%;height:38.66%;background:#163F5F;border-radius:3px 3px 0 0;z-index:2;">
+                  <span style="font-size:9px;font-weight:700;color:#163F5F;position:absolute;top:-14px;left:50%;transform:translateX(-50%);white-space:nowrap;">+27.1%</span>
+                </div><div style="position:absolute;bottom:28.57%;left:64.82%;width:6.04%;height:7.86%;background:#2F6FA3;border-radius:3px 3px 0 0;z-index:2;">
+                  <span style="font-size:9px;font-weight:700;color:#2F6FA3;position:absolute;top:-14px;left:50%;transform:translateX(-50%);white-space:nowrap;">+5.5%</span>
+                </div><div style="position:absolute;bottom:28.57%;left:72.86%;width:6.04%;height:22.43%;background:#163F5F;border-radius:3px 3px 0 0;z-index:2;">
+                  <span style="font-size:9px;font-weight:700;color:#163F5F;position:absolute;top:-14px;left:50%;transform:translateX(-50%);white-space:nowrap;">+15.7%</span>
+                </div><div style="position:absolute;bottom:28.57%;left:79.39%;width:6.04%;height:1.86%;background:#2F6FA3;border-radius:3px 3px 0 0;z-index:2;">
+                  <span style="font-size:9px;font-weight:700;color:#2F6FA3;position:absolute;top:-14px;left:50%;transform:translateX(-50%);white-space:nowrap;">+1.3%</span>
+                </div><div style="position:absolute;bottom:28.57%;left:87.43%;width:6.04%;height:12.04%;background:#163F5F;border-radius:3px 3px 0 0;z-index:2;">
+                  <span style="font-size:9px;font-weight:700;color:#163F5F;position:absolute;top:-14px;left:50%;transform:translateX(-50%);white-space:nowrap;">+8.4%</span>
+                </div><div style="position:absolute;bottom:28.57%;left:93.96%;width:6.04%;height:3.57%;background:#2F6FA3;border-radius:3px 3px 0 0;z-index:2;">
+                  <span style="font-size:9px;font-weight:700;color:#2F6FA3;position:absolute;top:-14px;left:50%;transform:translateX(-50%);white-space:nowrap;">+2.5%</span>
+                </div></div><div style="display:flex;margin-left:48px;margin-right:4px;margin-top:18px;"><div style="position:absolute;" ></div><div style="position:absolute;" ></div><div style="position:absolute;" ></div><div style="position:absolute;" ></div><div style="position:absolute;" ></div><div style="position:absolute;" ></div><div style="position:absolute;" ></div></div><div style="display:flex;justify-content:space-around;margin-left:48px;margin-right:4px;margin-top:4px;"><div style="flex:1;text-align:center;font-size:11px;color:#5A7A8F;">2019</div><div style="flex:1;text-align:center;font-size:11px;color:#5A7A8F;">2020</div><div style="flex:1;text-align:center;font-size:11px;color:#5A7A8F;">2021</div><div style="flex:1;text-align:center;font-size:11px;color:#5A7A8F;">2022</div><div style="flex:1;text-align:center;font-size:11px;color:#5A7A8F;">2023</div><div style="flex:1;text-align:center;font-size:11px;color:#5A7A8F;">2024</div><div style="flex:1;text-align:center;font-size:11px;color:#5A7A8F;">2025</div></div><div style="display:flex;gap:1.5rem;justify-content:center;margin-top:0.8rem;flex-wrap:wrap;"><span style="display:flex;align-items:center;gap:0.4rem;font-size:0.82rem;font-weight:600;"><span style="display:inline-block;width:13px;height:13px;border-radius:2px;background:#163F5F;"></span>BIZD (BDC Index)</span><span style="display:flex;align-items:center;gap:0.4rem;font-size:0.82rem;font-weight:600;"><span style="display:inline-block;width:13px;height:13px;border-radius:2px;background:#2F6FA3;"></span>Bloomberg US Agg</span></div></div></div>
+      <p class="pc-disc">BIZD is shown here as a market-level proxy and is not a recommended investment vehicle for client portfolios. Past performance does not guarantee future results.</p>
+    </div>
+  </div>
+
+  <div class="sb" id="sec-model-holdings">
+    <div class="sb-head"><h2>Private Capital Model Holdings</h2></div>
+    <div class="sb-body">
+      <p>The following three strategies are currently held within LiveWell Capital's Private Capital model portfolios. Each is selected for its differentiated access, structural advantages, and fit within the broader portfolio construction framework.</p>
+      <div class="holding-grid">
+
+        <div class="hcard">
+          <div class="hcard-header">
+            <div class="hcard-logo-name">
+              <img class="hcard-logo" src="https://logo.clearbit.com/monroecapital.com" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" alt="">
+              <div class="hcard-logo-fb" style="display:none;">MPC</div>
+              <div class="hcard-name">Monroe Private Capital Income Plus</div>
+            </div>
+            <span class="htype ht-credit">Private Credit</span>
+          </div>
+          <a class="hcard-link" href="https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Investment%20Committee/Alts%20presentations/Alts%202026%20Q1/Monroe%202026%20Q1%20presentation.pdf?csf=1&web=1&e=mJ3OOt" target="_blank">View Q1 2026 Presentation →</a>
+          <div class="hcard-stats">
+            <div class="hs"><span class="hs-val">9.3%</span><span class="hs-lbl">Annualized Return (ITD)</span></div>
+            <div class="hs"><span class="hs-val">9.4%</span><span class="hs-lbl">Distribution Rate (Ann.)</span></div>
+            <div class="hs"><span class="hs-val">9.8%</span><span class="hs-lbl">Wtd. Avg. Portfolio Yield</span></div>
+            <div class="hs"><span class="hs-val">1.00%</span><span class="hs-lbl">Mgmt. Fee (2026 Holiday)</span></div>
+          </div>
+          <ul class="hcard-bullets">
+            <li><strong>Alpha through Selection:</strong> Monroe's track record since 2004 — one of only 4% of managers operating before the GFC — delivers consistent, low-default returns in a market with 500–600 bps of manager dispersion.</li>
+            <li><strong>Lower Middle Market Advantage:</strong> Sole-agent status with superior pricing power, higher spreads, and financial covenants on 100% of direct deals.</li>
+            <li><strong>Economic Growth Engine:</strong> 180,000+ potential borrowers under $150M in revenue, often founder-led market leaders in resilient, defensive sectors.</li>
+            <li><strong>2026 Fee Holiday:</strong> 25-bps management fee reduction for the full 2026 calendar year, lowering the base fee from 1.25% to 1.00%.</li>
+            <li><strong>Monthly Distributions:</strong> Transitioned to monthly distribution payments in October 2025 for more consistent and predictable income.</li>
+          </ul>
+        </div>
+
+        <div class="hcard">
+          <div class="hcard-header">
+            <div class="hcard-logo-name">
+              <img class="hcard-logo" src="https://logo.clearbit.com/blackrock.com" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" alt="">
+              <div class="hcard-logo-fb" style="display:none;">BLK</div>
+              <div class="hcard-name">BlackRock Private Investments Fund (BPIF)</div>
+            </div>
+            <span class="htype ht-equity">Private Equity</span>
+          </div>
+          <a class="hcard-link" href="https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Investment%20Committee/Alts%20presentations/Alts%202026%20Q1/BlackRock%20BPIF%20Q42025%20Commentary_March_STAMPED.pdf?csf=1&web=1&e=u4VDQd" target="_blank">View Institutional Deck (Feb 2026) →</a>
+          <div class="hcard-stats">
+            <div class="hs"><span class="hs-val">8.58%</span><span class="hs-lbl">Ann. Return Since Inception (Mar 2021)</span></div>
+            <div class="hs"><span class="hs-val">20.65%</span><span class="hs-lbl">2025 Annual Return</span></div>
+            <div class="hs"><span class="hs-val">13.54%</span><span class="hs-lbl">3-Year Annualized Return</span></div>
+            <div class="hs"><span class="hs-val">$465M / $14.55</span><span class="hs-lbl">Current AUM / Inst. NAV per Share</span></div>
+          </div>
+          <ul class="hcard-bullets">
+            <li><strong>Proven Performance:</strong> 8.58% annualized return since inception (March 2021), 20.65% in 2025, and 13.54% 3-year annualized. 74% of the PE portfolio is marked above a 1.16x MOIC — with only 4% marked below cost.</li>
+            <li><strong>Portfolio Composition:</strong> 84% Direct Investments, 16% Secondaries. 46 direct + 18 secondary PE investments across 130+ underlying companies. Top sectors: Software &amp; Services (26%), Health Care (17%), Financial Services (15%).</li>
+            <li><strong>Fee Advantage:</strong> 1.10% contractual management fee waiver in effect through July 31, 2026 (effective rate: 0.65%). No performance fees, no sales charge, no capital calls.</li>
+            <li><strong>Liquidity &amp; Access:</strong> Quarterly tender offers up to 5% of NAV. Monthly subscriptions. 1099 tax reporting. Open to all investors — no accredited investor requirement as of July 2025.</li>
+            <li><strong>BlackRock Platform:</strong> Draws on $55.2B+ in LP commitments, 198 PE professionals, and 450+ GP relationships. Ranked partner-of-choice as the world's largest asset manager ($14T AUM).</li>
+          </ul>
+        </div>
+
+        <div class="hcard">
+          <div class="hcard-header">
+            <div class="hcard-logo-name">
+              <img class="hcard-logo" src="https://logo.clearbit.com/jpmorgan.com" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" alt="">
+              <div class="hcard-logo-fb" style="display:none;">JPM</div>
+              <div class="hcard-name">JPMorgan Hedged Equity Fund (JHEQX)</div>
+            </div>
+            <span class="htype ht-hedged">Hedged Equity</span>
+          </div>
+          <a class="hcard-link" href="https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Investment%20Committee/Alts%20presentations/Alts%202026%20Q1/JP%20Hedge%20Equity.pdf?csf=1&web=1&e=Wqa2Uz" target="_blank">View Fund Overview →</a>
+          <div class="hcard-stats">
+            <div class="hs"><span class="hs-val">7.49%</span><span class="hs-lbl">2025 Annual Return (Net)</span></div>
+            <div class="hs"><span class="hs-val">13.83%</span><span class="hs-lbl">3-Year Annualized Return</span></div>
+            <div class="hs"><span class="hs-val">9.00%</span><span class="hs-lbl">5-Year Annualized Return</span></div>
+            <div class="hs"><span class="hs-val">4★ / Bronze</span><span class="hs-lbl">Morningstar (I Share, Dec 2025)</span></div>
+          </div>
+          <ul class="hcard-bullets">
+            <li><strong>Strong Risk-Adjusted Returns:</strong> 7.49% 2025 annual return, 13.83% 3-year and 9.00% 5-year annualized returns. 10-year return of 9.32%. Beta of 0.63 vs. S&P 500.</li>
+            <li><strong>Put-Spread Collar Strategy:</strong> Hedges the portfolio against market drops between -5% and -20% — the range where most meaningful drawdowns occur over a market cycle.</li>
+            <li><strong>Institutional Scale:</strong> $21.33B in AUM. Inception December 2013. Expense ratio 0.57% — 59% below category average, capped at 0.60% through October 2026.</li>
+            <li><strong>Constant, Systematic Hedging:</strong> Quarterly reset periods (March, June, September, December) remove discretionary judgment from the process.</li>
+            <li><strong>Recognized Quality:</strong> Morningstar 4-Star Overall Rating and Bronze Medalist. Sharpe ratio of 1.13 (3-year). ~151 large-cap U.S. holdings.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="sb" id="sec-liquid-alts">
+    <div class="sb-head"><h2>Liquid Private Credit &amp; Additional Alternatives</h2></div>
+    <div class="sb-body">
+      <p>The following strategies represent expanded access points within the alternatives universe — offering clients exposure to private credit, venture/growth equity, and flexible credit through more accessible structures including interval funds and liquid alternatives.</p>
+      <div class="holding-grid">
+
+        <div class="hcard">
+          <div class="hcard-header">
+            <div class="hcard-logo-name">
+              <img class="hcard-logo" src="https://logo.clearbit.com/cliffwaterllc.com" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" alt="">
+              <div class="hcard-logo-fb" style="display:none;">CLFW</div>
+              <div class="hcard-name">Cliffwater Corporate Lending Fund (CCLFX)</div>
+            </div>
+            <span class="htype ht-credit">Liquid Private Credit</span>
+          </div>
+          <a class="hcard-link" href="https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Investment%20Committee/Alts%20presentations/Alts%202026%20Q1/Cliffwater%20Lending%20presentation%20Q1%202026.pdf?csf=1&web=1&e=YvtZiU" target="_blank">View Q1 2026 Presentation →</a>
+          <div class="hcard-stats">
+            <div class="hs"><span class="hs-val">9.49%</span><span class="hs-lbl">Ann. Return Since Inception (Jun 2019)</span></div>
+            <div class="hs"><span class="hs-val">10.02%</span><span class="hs-lbl">5-Year Annualized Return</span></div>
+            <div class="hs"><span class="hs-val">0.38%</span><span class="hs-lbl">YTD 2026</span></div>
+            <div class="hs"><span class="hs-val">9.5%</span><span class="hs-lbl">Distribution Rate</span></div>
+          </div>
+          <ul class="hcard-bullets">
+            <li><strong>Consistent Performance:</strong> 9.49% annualized return since inception, 10.02% 5-year annualized, 11.10% 3-year annualized — with a low 1.71% standard deviation. YTD 2026: +0.38%.</li>
+            <li><strong>High-Quality, Defensive Portfolio:</strong> 97% first lien exposure, 41% average loan-to-value across 4,100+ credits. $100M+ average borrower EBITDA.</li>
+            <li><strong>Scale and Multi-Lender Access:</strong> $32.5B net assets. 30+ investment partners. 9.5% distribution rate paid quarterly.</li>
+            <li><strong>Accessible Structure:</strong> Interval fund. No investor qualification requirements. Daily NAV. Ticker-symbol execution (CCLFX). Min. 5% quarterly repurchase.</li>
+            <li><strong>Low Cost:</strong> 1.00% management fee. No incentive fee. 1099 tax reporting.</li>
+          </ul>
+        </div>
+
+        
+
+        
+
+        <div class="hcard">
+          <div class="hcard-header">
+            <div class="hcard-logo-name">
+              <img class="hcard-logo" src="https://logo.clearbit.com/pantheon.com" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" alt="">
+              <div class="hcard-logo-fb" style="display:none;">PAN</div>
+              <div class="hcard-name">AMG Pantheon Fund (P-PEXX)</div>
+            </div>
+            <span class="htype ht-equity">Private Equity</span>
+          </div>
+          <a class="hcard-link" href="https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Investment%20Committee/Alts%20presentations/Alts%202026%20Q1/P-PEXX-Client-Presentation-Q1%202026.pdf?csf=1&web=1&e=5sjTNd" target="_blank">View Q1 2026 Presentation →</a>
+          <div class="hcard-stats">
+            <div class="hs"><span class="hs-val">12.07%</span><span class="hs-lbl">Ann. Return Since 2015 Inception</span></div>
+            <div class="hs"><span class="hs-val">5.86%</span><span class="hs-lbl">Std. Dev. (vs. 14.56% MSCI World)</span></div>
+            <div class="hs"><span class="hs-val">-4.84%</span><span class="hs-lbl">Max Drawdown (vs. -25.42% MSCI World)</span></div>
+            <div class="hs"><span class="hs-val">$82.3B</span><span class="hs-lbl">Pantheon AUM</span></div>
+          </div>
+          <ul class="hcard-bullets">
+            <li><strong>Institutional Access to Global Private Markets:</strong> Leverages Pantheon's $82.3B AUM platform and database of 10,900+ GPs.</li>
+            <li><strong>Proven Outperformance with Lower Volatility:</strong> 12.07% annualized return since 2015, std. dev. of 5.86% vs. 14.56% for MSCI World, max drawdown of -4.84% vs. -25.42%.</li>
+            <li><strong>Solves Traditional PE Challenges:</strong> Evergreen vehicle with no capital calls, immediate portfolio exposure to dampen J-Curve, and quarterly liquidity (up to 5% of NAV).</li>
+            <li><strong>Fee-Efficient Portfolio Construction:</strong> Secondaries (51%), Co-investments (41%), Primaries (9%) — co-investments generally carry no underlying management fees.</li>
+            <li><strong>Deeply Diversified:</strong> 411 investments across 181 managers, weighted toward Technology (29%) and Healthcare (17%).</li>
+          </ul>
+        </div>
+
+        <div class="hcard">
+          <div class="hcard-header">
+            <div class="hcard-logo-name">
+              <img class="hcard-logo" src="https://logo.clearbit.com/stepstonegroup.com" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" alt="">
+              <div class="hcard-logo-fb" style="display:none;">STEP</div>
+              <div class="hcard-name">StepStone Private Venture &amp; Growth Fund (SPRING)</div>
+            </div>
+            <span class="htype ht-equity">Private Venture &amp; Growth</span>
+          </div>
+          <a class="hcard-link" href="https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Investment%20Committee/Alts%20presentations/Alts%202026%20Q1/StepStone%20Private%20Venture%20and%20Growth%20Fund%20February.pdf?csf=1&web=1&e=HM90k2" target="_blank">View February Presentation →</a>
+          <div class="hcard-stats">
+            <div class="hs"><span class="hs-val">31.17%</span><span class="hs-lbl">Ann. Return Since Inception (Net, Class I)</span></div>
+            <div class="hs"><span class="hs-val">45.95%</span><span class="hs-lbl">1-Year Return</span></div>
+            <div class="hs"><span class="hs-val">8.70%</span><span class="hs-lbl">YTD 2026</span></div>
+            <div class="hs"><span class="hs-val">$5.9B</span><span class="hs-lbl">Fund AUM</span></div>
+          </div>
+          <ul class="hcard-bullets">
+            <li><strong>Exceptional Returns:</strong> 31.17% annualized return since inception (November 2022), 45.95% 1-year return, and 26.96% 3-year annualized — all net of fees as of February 2026. YTD 2026: +8.70%.</li>
+            <li><strong>Broad Diversification:</strong> 2,000+ portfolio companies across 419 total investments and 102 fund managers. 85% Venture Capital, 15% Growth Equity.</li>
+            <li><strong>Geographic Reach:</strong> 92% North America, 5% Europe, 3% Rest of World. Class I NAV: $61.19.</li>
+            <li><strong>Liquidity &amp; Structure:</strong> Quarterly tender redemptions up to 2.5% of outstanding shares. Monthly subscriptions at NAV. 1099 tax reporting. Evergreen structure.</li>
+            <li><strong>Eligibility:</strong> Qualified Client only. $5.9B in AUM. Registered under the Investment Company Act of 1940.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+
+<!-- ════════════════════════════════════════════ -->
+<!--  PAGE: MODEL PORTFOLIOS                      -->
+<!-- ════════════════════════════════════════════ -->
+<div id="sec-models" class="container" style="border-top:4px solid var(--navy);margin-top:2rem;padding-top:2rem;">
+  <div class="sb">
+    <div class="sb-head"><h2>LiveWell Model Portfolios</h2></div>
+    <div class="sb-body">
+      <div class="sb" style="margin-bottom:2rem;">
+        <div class="sb-head"><h2>📊 Model Portfolio Performance — Updated 3/31/2026</h2></div>
+        <div class="sb-body" style="overflow-x:auto;">
+          <table style="font-size:0.82rem;">
+            <thead>
+              <tr>
+                <th>Portfolio</th>
+                <th>1 Month</th>
+                <th>YTD</th>
+                <th>1 Year</th>
+                <th>3 Year</th>
+                <th>5 Year</th>
+                <th>10 Year</th>
+                <th>Max Drawdown</th>
+                <th>Net Exp.</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Core Models</strong></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+              <tr><td>.LWC Core 20/80</td><td>-2.75%</td><td>0.14%</td><td>6.59%</td><td>5.07%</td><td>2.45%</td><td>4.39%</td><td>-13.7%</td><td>0.20%</td></tr>
+              <tr><td>.LWC Core 30/70</td><td>-2.85%</td><td>0.50%</td><td>8.21%</td><td>6.11%</td><td>3.30%</td><td>5.07%</td><td>-14.4%</td><td>0.20%</td></tr>
+              <tr><td>.LWC Core 40/60</td><td>-3.18%</td><td>1.30%</td><td>10.35%</td><td>7.24%</td><td>3.94%</td><td>5.94%</td><td>-15.9%</td><td>0.20%</td></tr>
+              <tr><td>.LWC Core 50/50</td><td>-3.48%</td><td>0.73%</td><td>11.10%</td><td>8.26%</td><td>4.70%</td><td>6.79%</td><td>-17.5%</td><td>0.19%</td></tr>
+              <tr><td>.LWC Core 60/40</td><td>-3.76%</td><td>0.81%</td><td>12.88%</td><td>9.58%</td><td>5.58%</td><td>7.69%</td><td>-20.7%</td><td>0.19%</td></tr>
+              <tr><td>.LWC Core 70/30</td><td>-4.15%</td><td>0.73%</td><td>14.63%</td><td>10.93%</td><td>6.49%</td><td>8.82%</td><td>-24.0%</td><td>0.18%</td></tr>
+              <tr><td>.LWC Core 80/20</td><td>-4.64%</td><td>0.82%</td><td>16.62%</td><td>12.10%</td><td>7.19%</td><td>9.56%</td><td>-27.4%</td><td>0.19%</td></tr>
+              <tr><td>.LWC Core 90/10</td><td>-5.04%</td><td>0.87%</td><td>18.53%</td><td>13.32%</td><td>7.93%</td><td>10.36%</td><td>-30.9%</td><td>0.18%</td></tr>
+              <tr><td>.LWC Core 98/2</td><td>-5.64%</td><td>0.68%</td><td>20.98%</td><td>14.99%</td><td>8.80%</td><td>10.98%</td><td>-34.0%</td><td>0.18%</td></tr>
+              <tr><td><strong>Private Client Models</strong></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+              <tr><td>.LWC Private Client 60/40</td><td>-3.67%</td><td>0.08%</td><td>12.49%</td><td>10.22%</td><td>5.99%</td><td>7.97%</td><td>-20.7%</td><td>0.18%</td></tr>
+              <tr><td>.LWC Private Client 70/30</td><td>-4.08%</td><td>0.05%</td><td>14.27%</td><td>11.73%</td><td>7.04%</td><td>9.21%</td><td>-28.0%</td><td>0.17%</td></tr>
+              <tr><td>.LWC Private Client 80/20</td><td>-4.54%</td><td>0.12%</td><td>15.82%</td><td>12.96%</td><td>7.91%</td><td>10.16%</td><td>-30.9%</td><td>0.18%</td></tr>
+              <tr><td>.LWC Private Client 90/10</td><td>-4.91%</td><td>0.29%</td><td>17.92%</td><td>14.16%</td><td>8.65%</td><td>10.73%</td><td>-32.9%</td><td>0.17%</td></tr>
+              <tr><td><strong>Private Capital Models</strong></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+              <tr><td>.LWC Private Capital 10% (60/40)</td><td>-3.71%</td><td>0.16%</td><td>12.05%</td><td>10.58%</td><td>6.04%</td><td>8.05%</td><td>-22.8%</td><td>0.30%</td></tr>
+              <tr><td>.LWC Private Capital 15% (70/30)</td><td>-4.13%</td><td>-0.53%</td><td>13.05%</td><td>11.67%</td><td>6.74%</td><td>8.88%</td><td>-26.1%</td><td>0.32%</td></tr>
+              <tr><td>.LWC Private Capital 20% (80/20)</td><td>-4.73%</td><td>-1.08%</td><td>14.02%</td><td>12.34%</td><td>6.77%</td><td>9.26%</td><td>-30.2%</td><td>0.40%</td></tr>
+              <tr><td><strong>Retirement Income Models</strong></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+              <tr><td>.LWC 5% Retirement Income (50/50)</td><td>-3.14%</td><td>0.82%</td><td>11.64%</td><td>8.69%</td><td>4.43%</td><td>6.51%</td><td>-19.1%</td><td>0.16%</td></tr>
+              <tr><td>.LWC 4% Retirement Income (60/40)</td><td>-3.50%</td><td>0.87%</td><td>13.35%</td><td>9.89%</td><td>5.36%</td><td>7.47%</td><td>-19.8%</td><td>0.17%</td></tr>
+              <tr><td>.LWC 3% Retirement Income (70/30)</td><td>-3.96%</td><td>0.78%</td><td>15.05%</td><td>11.24%</td><td>6.37%</td><td>8.49%</td><td>-20.6%</td><td>0.17%</td></tr>
+              <tr><td>.LWC 7-Year Protected Income</td><td>-1.32%</td><td>-0.28%</td><td>4.29%</td><td>4.18%</td><td>1.24%</td><td>2.48%</td><td>-15.5%</td><td>0.15%</td></tr>
+              <tr><td><strong>Benchmarks</strong></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+              <tr><td>S&amp;P 500 Total Return</td><td>-4.98%</td><td>-4.33%</td><td>17.80%</td><td>18.32%</td><td>12.06%</td><td>14.16%</td><td>-33.8%</td><td>—</td></tr>
+              <tr><td>Bloomberg US Aggregate</td><td>-1.76%</td><td>-0.05%</td><td>4.35%</td><td>3.63%</td><td>0.31%</td><td>1.70%</td><td>-18.4%</td><td>—</td></tr>
+            </tbody>
+          </table>
+          <p style="font-size:0.74rem;color:#8AACBE;margin-top:0.8rem;font-style:italic;">Performance data as of 3/31/2026. Past performance does not guarantee future results. Returns shown are net of fees. Source: LiveWell Capital Wealth Management Department.</p>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <h4>📊 Performance Data</h4>
+        <p>Click any model below to view the tearsheet. All models are actively managed by the LiveWell Wealth Management Department.</p>
+        <p><strong>Updated:</strong> Monthly | <a href="https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Reporting/LWC%20Model%20Performance%204-1.pdf?csf=1&web=1&e=NGPJMy" target="_blank" style="color:var(--exec);font-weight:600;">View Full Performance Report →</a></p>
+      </div>
+
+      <h3>Retirement Income Models</h3>
+      <div class="model-grid">
+        <div class="model-card" onclick="window.open('https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Models%20for%20Y-Charts/Tearsheets%20Y-Charts%20ENV2%20models/3%25%20Retirement%20Income%207030.pdf?csf=1&web=1&e=Ngngrw','_blank')"><h4>LWC 3% Retirement Income</h4><p class="model-type">70/30 Allocation</p><div class="alloc-bar"><div class="alloc-eq" style="width:70%">70%</div><div class="alloc-fi" style="width:30%">30%</div></div><span class="link-icon">View Tearsheet →</span></div>
+        <div class="model-card" onclick="window.open('https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Models%20for%20Y-Charts/Tearsheets%20Y-Charts%20ENV2%20models/4%25%20Retirement%20Income%206040.pdf?csf=1&web=1&e=XeJYzJ','_blank')"><h4>LWC 4% Retirement Income</h4><p class="model-type">60/40 Allocation</p><div class="alloc-bar"><div class="alloc-eq" style="width:60%">60%</div><div class="alloc-fi" style="width:40%">40%</div></div><span class="link-icon">View Tearsheet →</span></div>
+        <div class="model-card" onclick="window.open('https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Models%20for%20Y-Charts/Tearsheets%20Y-Charts%20ENV2%20models/5%25%20Retirement%20Income%205050.pdf?csf=1&web=1&e=JoRLlt','_blank')"><h4>LWC 5% Retirement Income</h4><p class="model-type">50/50 Allocation</p><div class="alloc-bar"><div class="alloc-eq" style="width:50%">50%</div><div class="alloc-fi" style="width:50%">50%</div></div><span class="link-icon">View Tearsheet →</span></div>
+        <div class="model-card" onclick="window.open('https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Models%20for%20Y-Charts/Tearsheets%20Y-Charts%20ENV2%20models/.LWC%207%20Year%20Protected%20Income.pdf?csf=1&web=1&e=lJcuv1','_blank')"><h4>LWC 7-Year Protected Income</h4><p class="model-type">Income Focused</p><span class="link-icon">View Tearsheet →</span></div>
+      </div>
+
+      <h3>Core Models</h3>
+      <div class="model-grid">
+        <div class="model-card" onclick="window.open('https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Models%20for%20Y-Charts/Tearsheets%20Y-Charts%20ENV2%20models/.LWC%20Core%202080.pdf?csf=1&web=1&e=zyLhA0','_blank')"><h4>LWC Core 20/80</h4><p class="model-type">Conservative</p><div class="alloc-bar"><div class="alloc-eq" style="width:20%">20%</div><div class="alloc-fi" style="width:80%">80%</div></div><span class="link-icon">View Tearsheet →</span></div>
+        <div class="model-card" onclick="window.open('https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Models%20for%20Y-Charts/Tearsheets%20Y-Charts%20ENV2%20models/.LWC%20Core%203070.pdf?csf=1&web=1&e=3qo5Fx','_blank')"><h4>LWC Core 30/70</h4><p class="model-type">Conservative</p><div class="alloc-bar"><div class="alloc-eq" style="width:30%">30%</div><div class="alloc-fi" style="width:70%">70%</div></div><span class="link-icon">View Tearsheet →</span></div>
+        <div class="model-card" onclick="window.open('https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Models%20for%20Y-Charts/Tearsheets%20Y-Charts%20ENV2%20models/.LWC%20Core%204060.pdf?csf=1&web=1&e=1BrR6b','_blank')"><h4>LWC Core 40/60</h4><p class="model-type">Moderate Conservative</p><div class="alloc-bar"><div class="alloc-eq" style="width:40%">40%</div><div class="alloc-fi" style="width:60%">60%</div></div><span class="link-icon">View Tearsheet →</span></div>
+        <div class="model-card" onclick="window.open('https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Models%20for%20Y-Charts/Tearsheets%20Y-Charts%20ENV2%20models/.LWC%20Core%205050.pdf?csf=1&web=1&e=L4b2b9','_blank')"><h4>LWC Core 50/50</h4><p class="model-type">Moderate</p><div class="alloc-bar"><div class="alloc-eq" style="width:50%">50%</div><div class="alloc-fi" style="width:50%">50%</div></div><span class="link-icon">View Tearsheet →</span></div>
+        <div class="model-card" onclick="window.open('https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Models%20for%20Y-Charts/Tearsheets%20Y-Charts%20ENV2%20models/.LWC%20Core%206040.pdf?csf=1&web=1&e=FeiQyx','_blank')"><h4>LWC Core 60/40</h4><p class="model-type">Moderate Aggressive</p><div class="alloc-bar"><div class="alloc-eq" style="width:60%">60%</div><div class="alloc-fi" style="width:40%">40%</div></div><span class="link-icon">View Tearsheet →</span></div>
+        <div class="model-card" onclick="window.open('https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Models%20for%20Y-Charts/Tearsheets%20Y-Charts%20ENV2%20models/.LWC%20Core%207030.pdf?csf=1&web=1&e=xQkbrI','_blank')"><h4>LWC Core 70/30</h4><p class="model-type">Aggressive</p><div class="alloc-bar"><div class="alloc-eq" style="width:70%">70%</div><div class="alloc-fi" style="width:30%">30%</div></div><span class="link-icon">View Tearsheet →</span></div>
+        <div class="model-card" onclick="window.open('https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Models%20for%20Y-Charts/Tearsheets%20Y-Charts%20ENV2%20models/.LWC%20Core%208020.pdf?csf=1&web=1&e=36E0br','_blank')"><h4>LWC Core 80/20</h4><p class="model-type">Aggressive</p><div class="alloc-bar"><div class="alloc-eq" style="width:80%">80%</div><div class="alloc-fi" style="width:20%">20%</div></div><span class="link-icon">View Tearsheet →</span></div>
+        <div class="model-card" onclick="window.open('https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Models%20for%20Y-Charts/Tearsheets%20Y-Charts%20ENV2%20models/.LWC%20Core%209010.pdf?csf=1&web=1&e=EV6aaq','_blank')"><h4>LWC Core 90/10</h4><p class="model-type">Very Aggressive</p><div class="alloc-bar"><div class="alloc-eq" style="width:90%">90%</div><div class="alloc-fi" style="width:10%">10%</div></div><span class="link-icon">View Tearsheet →</span></div>
+        <div class="model-card" onclick="window.open('https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Models%20for%20Y-Charts/Tearsheets%20Y-Charts%20ENV2%20models/.LWC%20Core%20982.pdf?csf=1&web=1&e=y9exR4','_blank')"><h4>LWC Core 98/02</h4><p class="model-type">Maximum Growth</p><div class="alloc-bar"><div class="alloc-eq" style="width:98%">98%</div><div class="alloc-fi" style="width:2%">2%</div></div><span class="link-icon">View Tearsheet →</span></div>
+      </div>
+
+      <h3>Private Client Models</h3>
+      <div class="info-box"><p><strong>Eligibility:</strong> Individual Equities for Accounts/Groups above $2M</p></div>
+      <div class="model-grid">
+        <div class="model-card" onclick="window.open('https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Models%20for%20Y-Charts/Tearsheets%20Y-Charts%20ENV2%20models/.LWC%20Private%20Client%206040.pdf?csf=1&web=1&e=RTwJWL','_blank')"><h4>LWC Private Client 60/40</h4><p class="model-type">Moderate Aggressive</p><div class="alloc-bar"><div class="alloc-eq" style="width:60%">60%</div><div class="alloc-fi" style="width:40%">40%</div></div><span class="link-icon">View Tearsheet →</span></div>
+        <div class="model-card" onclick="window.open('https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Models%20for%20Y-Charts/Tearsheets%20Y-Charts%20ENV2%20models/.LWC%20Private%20Client%207030.pdf?csf=1&web=1&e=ol7T8w','_blank')"><h4>LWC Private Client 70/30</h4><p class="model-type">Aggressive</p><div class="alloc-bar"><div class="alloc-eq" style="width:70%">70%</div><div class="alloc-fi" style="width:30%">30%</div></div><span class="link-icon">View Tearsheet →</span></div>
+        <div class="model-card" onclick="window.open('https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Models%20for%20Y-Charts/Tearsheets%20Y-Charts%20ENV2%20models/.LWC%20Private%20Client%208020.pdf?csf=1&web=1&e=UjC6ns','_blank')"><h4>LWC Private Client 80/20</h4><p class="model-type">Aggressive</p><div class="alloc-bar"><div class="alloc-eq" style="width:80%">80%</div><div class="alloc-fi" style="width:20%">20%</div></div><span class="link-icon">View Tearsheet →</span></div>
+        <div class="model-card" onclick="window.open('https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Models%20for%20Y-Charts/Tearsheets%20Y-Charts%20ENV2%20models/.LWC%20Private%20Client%209010.pdf?csf=1&web=1&e=ysmAQe','_blank')"><h4>LWC Private Client 90/10</h4><p class="model-type">Very Aggressive</p><div class="alloc-bar"><div class="alloc-eq" style="width:90%">90%</div><div class="alloc-fi" style="width:10%">10%</div></div><span class="link-icon">View Tearsheet →</span></div>
+      </div>
+
+      <h3>Private Capital Models</h3>
+      <div class="warn-box"><p><strong>Eligibility Requirements:</strong> $2M Accredited Investor / $5M Qualified Purchaser</p></div>
+      <div class="model-grid">
+        <div class="model-card" onclick="window.open('https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Models%20for%20Y-Charts/Tearsheets%20Y-Charts%20ENV2%20models/LWC%20Private%20Capital%2010%25%2060_40%20Risk%20Equivalent.pdf?csf=1&web=1&e=QwNfDq','_blank')"><h4>LWC Private Capital 60/40</h4><p class="model-type">Risk Equivalent</p><div class="alloc-bar"><div class="alloc-eq" style="width:60%">60%</div><div class="alloc-fi" style="width:40%">40%</div></div><span class="link-icon">View Tearsheet →</span></div>
+        <div class="model-card" onclick="window.open('https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Models%20for%20Y-Charts/Tearsheets%20Y-Charts%20ENV2%20models/LWC%20Private%20Capital%2015%25%2070_30%20Risk%20Equivalent.pdf?csf=1&web=1&e=gDd0i3','_blank')"><h4>LWC Private Capital 70/30</h4><p class="model-type">Risk Equivalent</p><div class="alloc-bar"><div class="alloc-eq" style="width:70%">70%</div><div class="alloc-fi" style="width:30%">30%</div></div><span class="link-icon">View Tearsheet →</span></div>
+        <div class="model-card" onclick="window.open('https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Models%20for%20Y-Charts/Tearsheets%20Y-Charts%20ENV2%20models/LWC%20Private%20Capital%2020%25%2080_20%20Risk%20Equivalent.pdf?csf=1&web=1&e=DEzcco','_blank')"><h4>LWC Private Capital 80/20</h4><p class="model-type">Risk Equivalent</p><div class="alloc-bar"><div class="alloc-eq" style="width:80%">80%</div><div class="alloc-fi" style="width:20%">20%</div></div><span class="link-icon">View Tearsheet →</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ════════════════════════════════════════════ -->
+<!--  PAGE: RESOURCES                             -->
+<!-- ════════════════════════════════════════════ -->
+<div id="sec-resources" class="container" style="border-top:4px solid var(--navy);margin-top:2rem;padding-top:2rem;">
+  <div class="sb">
+    <div class="sb-head"><h2>Additional Resources</h2></div>
+    <div class="sb-body">
+      <div class="card-grid">
+        <div class="card"><h4>📊 Model Performance Dashboard</h4><p>Real-time performance tracking for all LiveWell managed models with interactive charts.</p><a href="https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Reporting/LWC%20Model%20Performance%204-1.pdf?csf=1&web=1&e=NGPJMy" target="_blank" style="color:var(--exec);font-weight:600;">View Performance Report →</a></div>
+        <div class="card"><h4>📈 YCharts Analysis</h4><p>Access comprehensive portfolio analytics, benchmarking, and risk metrics.</p><a href="https://ycharts.com/dashboard/#/?dashboardId=-1" target="_blank" style="color:var(--exec);font-weight:600;">Open YCharts →</a></div>
+        <div class="card"><h4>📧 Contact Investment Strategy</h4><p>Questions or need clarification on any positioning or recommendations?</p><a href="/cdn-cgi/l/email-protection#a3cacdd5c6d0d7cec6cdd7d0d7d1c2d7c6c4dae3cfcad5c6d4c6cfcfc0c2d3cad7c2cf8dc0ccce" style="color:var(--exec);font-weight:600;">Email Team →</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ── FOOTER ── -->
+<footer>
+  <p><strong>LiveWell Capital | Wealth Management Department</strong></p>
+  <p>Monthly Insights — For Internal Use Only &nbsp;|&nbsp; Confidential and Proprietary</p>
+  <p style="margin-top:0.5rem;font-size:0.76rem;opacity:0.6;">© 2026 LiveWell Capital. All rights reserved. | March 2026 Edition</p>
+</footer>
+
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+</body>
+</html>
