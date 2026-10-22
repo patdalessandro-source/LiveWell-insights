@@ -1,6 +1,100 @@
 <!DOCTYPE html>
 <html lang="en" data-writer-dashboard-theme="org-default">
-<head>
+<head><script>(/** Remove citation markers from rendered prose without rewriting document source. */
+function installDashboardCitations(config) {
+  "use strict";
+
+  if (window.__writerDashboardCitations) {
+    return;
+  }
+
+  const { pattern, prefixes } = config;
+  const withPunctuation = new RegExp(" ?" + pattern + "([.,!?;:])", "gs");
+  const withSpaces = new RegExp("( ?)" + pattern + "( ?)", "gs");
+  const identifier = /^[\p{L}\p{N}_.:-]+$/u;
+  const cleanedText = new WeakSet();
+
+  window.__writerDashboardCitations = { containsCleanedText };
+
+  cleanSubtree(document);
+  new MutationObserver(function (records) {
+    for (const record of records) {
+      if (record.type === "characterData") {
+        cleanText(record.target);
+      } else {
+        for (const node of record.addedNodes) {
+          cleanSubtree(node);
+        }
+      }
+    }
+  }).observe(document, { childList: true, characterData: true, subtree: true });
+
+  function containsCleanedText(element) {
+    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+    let text;
+
+    while ((text = walker.nextNode())) {
+      if (cleanedText.has(text)) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  function cleanSubtree(root) {
+    if (root.nodeType === Node.TEXT_NODE) {
+      cleanText(root);
+
+      return;
+    }
+
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    let text;
+
+    while ((text = walker.nextNode())) {
+      cleanText(text);
+    }
+  }
+
+  function cleanText(text) {
+    // Generated applications own their executable content and users own their drafts.
+    if (
+      !text.parentElement ||
+      text.parentElement.closest(
+        'script, style, textarea, [contenteditable]:not([contenteditable="false"])',
+      )
+    ) {
+      return;
+    }
+
+    const cleaned = text.nodeValue
+      .replace(withPunctuation, function (marker, citationId, punctuation) {
+        return isCitation(citationId) ? punctuation : marker;
+      })
+      .replace(withSpaces, function (marker, before, citationId, after) {
+        return isCitation(citationId) ? before || after : marker;
+      });
+
+    // Observer records include our own changes; unchanged text must stay untouched.
+    if (cleaned !== text.nodeValue) {
+      cleanedText.add(text);
+      text.nodeValue = cleaned;
+    }
+  }
+
+  function isCitation(citationId) {
+    const trimmed = citationId.trim();
+
+    return (
+      identifier.test(trimmed) &&
+      prefixes.some(function (prefix) {
+        return trimmed.startsWith(prefix) && trimmed.length > prefix.length;
+      })
+    );
+  }
+}
+)({"pattern":"(?:\u3010|\u3016|\u301a|\u3014|\u3018|\u2045|\\\\u3010|\\\\u3016|\\\\u301a|\\\\u3014|\\\\u3018|\\\\u2045)((?:(?!\u3011|\u3017|\u301b|\u3015|\u3019|\u2046|\\\\u3011|\\\\u3017|\\\\u301b|\\\\u3015|\\\\u3019|\\\\u2046).)+?)(?:\u3011|\u3017|\u301b|\u3015|\u3019|\u2046|\\\\u3011|\\\\u3017|\\\\u301b|\\\\u3015|\\\\u3019|\\\\u2046)","prefixes":["doc-","web-","kg-","cp-","sg-","eb-"]});</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LWC Monthly Insights — October 2026</title>
@@ -815,7 +909,7 @@
 
   <!-- OVERVIEW -->
   <div class="section">
-    <h2 class="section-title">Overview &nbsp;<a href="https://nmfco.sharepoint.com/:p:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Investment%20Committee/Alts%20-%20DI%20-%20Mav%20-%20Neo%20SharePoint%20links/Maverick%20Diversified%20Portfolios.pptx?d=w2bb7c853ab9d4ab7b414340c78256d3a&csf=1&web=1&e=a9PBAp" target="_blank" rel="noopener" style="font-size:14px;font-weight:400;color:var(--writer-dashboard-chart-2);text-decoration:none;">&rarr; View Maverick Slide Deck</a></h2>
+    <h2 class="section-title">Overview &nbsp;<a href="https://nmfco.sharepoint.com/:p:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Investment%20Committee/Alts%20-%20DI%20-%20Mav%20-%20Neo%20SharePoint%20links/Maverick%20Diversified%20Portfolios.pptx?d=w2bb7c853ab9d4ab7b414340c78256d3a&csf=1&web=1&e=a9PBAp" target="_blank" rel="noopener" style="font-size:14px;font-weight:400;color:var(--writer-dashboard-chart-2);text-decoration:none;">&rarr; View Maverick Slide Deck</a> &nbsp; <a href="https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Investment%20Committee/Alts%20-%20DI%20-%20Mav%20-%20Neo%20SharePoint%20links/Maverick_Fact_Sheet_Q3_2026%20(2).pdf?d=w820113b973774841a766ccde7aab5126&csf=1&web=1&e=dI7GRQ" target="_blank" rel="noopener" style="font-size:14px;font-weight:400;color:var(--writer-dashboard-chart-2);text-decoration:none;">&rarr; View Maverick Fact Sheet</a></h2>
     <div class="card">
       <div class="section-body">
         <p>Maverick is a systematic US large-cap strategy built from two sleeves that do opposite jobs.</p>
@@ -987,7 +1081,7 @@
 
   <!-- OVERVIEW -->
   <div class="section">
-    <h2 class="section-title">Overview &nbsp;<a href="https://nmfco.sharepoint.com/:p:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Investment%20Committee/Alts%20-%20DI%20-%20Mav%20-%20Neo%20SharePoint%20links/Neo_Diversified_Portfolios.pptx?d=wa0fa7a9a2446483d8747be7227ae3181&csf=1&web=1&e=rcKd9D" target="_blank" rel="noopener" style="font-size:14px;font-weight:400;color:var(--writer-dashboard-chart-2);text-decoration:none;">&rarr; View Neo Slide Deck</a></h2>
+    <h2 class="section-title">Overview &nbsp;<a href="https://nmfco.sharepoint.com/:p:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Investment%20Committee/Alts%20-%20DI%20-%20Mav%20-%20Neo%20SharePoint%20links/Neo_Diversified_Portfolios.pptx?d=wa0fa7a9a2446483d8747be7227ae3181&csf=1&web=1&e=rcKd9D" target="_blank" rel="noopener" style="font-size:14px;font-weight:400;color:var(--writer-dashboard-chart-2);text-decoration:none;">&rarr; View Neo Slide Deck</a> &nbsp; <a href="https://nmfco.sharepoint.com/:b:/r/sites/ec-lwc/Shared%20Documents/Operations/Portfolio%20Resources/Investment%20Committee/Alts%20-%20DI%20-%20Mav%20-%20Neo%20SharePoint%20links/Neo_Fact_Sheet_Q3_2026%20(6).pdf?d=wed7f5d9d38ef4edf9cbba70156081df6&csf=1&web=1&e=meG7Ph" target="_blank" rel="noopener" style="font-size:14px;font-weight:400;color:var(--writer-dashboard-chart-2);text-decoration:none;">&rarr; View Neo Fact Sheet</a></h2>
     <div class="card">
       <div class="section-body">
         <p>Neo is an unconstrained macro portfolio. Its job is to keep client money on the right side of the big economic and market cycles; such as, risk-on vs risk-off regimes, reflation vs disinflation, a strong dollar versus a weak one, value leadership vs growth leadership. Critically, this is achieved without anyone having to forecast (or guess) which way those cycles will turn.</p>
